@@ -309,8 +309,8 @@ export default {
 }
 
 .victory-image {
-  width: 50px; /* Adjust this for your preferred size */
-  height: 50px; /* Adjust this for your preferred size */
+  width: 200px; /* Adjust this for your preferred size */
+  height: 200px; /* Adjust this for your preferred size */
   margin-top: 10px; /* Space above the image */
 }
 </style>
