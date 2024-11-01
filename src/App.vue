@@ -19,6 +19,9 @@
       <router-link to="/sound">
         <img src="@/assets/SoundMini.png" alt="Sound" class="nav-icon"/>
       </router-link>
+      <router-link to="/info"> <!-- Add Info link -->
+        <img src="@/assets/InfoMini.png" alt="Info" class="nav-icon"/>
+      </router-link>
     </nav>
 
     <!-- Page Content -->

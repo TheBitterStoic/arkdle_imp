@@ -21,9 +21,10 @@
         />
       </div>
 
-      <!-- Success message overlay -->
+      <!-- Success message overlay with dinosaur image -->
       <div v-else class="correct-message">
-        🎉 Congratulations! You've guessed today's sound: {{ correctDino }} !🎉
+        🎉Congratulations! You've guessed today's sound: {{ correctDino }}!🎉
+        <img :src="getDinoImage(correctDino)" alt="Dinosaur" class="victory-image" />
       </div>
 
       <!-- Dropdown List for Filtered Dinosaurs -->
@@ -59,6 +60,7 @@
 
 <script>
 import soundList from '@/data/soundList';
+import dinoList from '@/data/dinoList'; // Import dino list
 
 export default {
   name: 'SoundView',
@@ -85,6 +87,9 @@ export default {
           !this.guesses.includes(dino)
         );
     },
+    formattedHint() {
+      return this.revealedHint.split('').join(' '); // Format the hint for display
+    }
   },
   methods: {
     getDailyDino() {
@@ -93,6 +98,13 @@ export default {
       const dayOfYear = Math.floor((now - start) / (1000 * 60 * 60 * 24));
       const index = dayOfYear % this.soundFiles.length;
       return this.soundFiles[index].replace('sound.ogg', '');
+    },
+    getDinoImage(dinoName) {
+      try {
+        return require(`@/assets/dino_images/${dinoName}.png`); // Adjust the path as necessary
+      } catch (e) {
+        return require('@/assets/dino_images/default.png'); // Default image if the specific dino image is not found
+      }
     },
     playSound() {
       if (this.sound) {
@@ -294,5 +306,11 @@ export default {
 
 .row-incorrect {
   background-color: #b6202f;
+}
+
+.victory-image {
+  width: 50px; /* Adjust this for your preferred size */
+  height: 50px; /* Adjust this for your preferred size */
+  margin-top: 10px; /* Space above the image */
 }
 </style>

@@ -234,6 +234,8 @@ export default {
   padding: 10px;
   cursor: pointer;
   text-align: center;
+  background-color: #f5f5f8; /* Light cyan background for each item */
+  color: #000000; /* Dark teal text color */
 }
 
 .no-match {

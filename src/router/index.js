@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import DinoView from '../views/DinoView.vue'
 import SaddleView from '../views/SaddleView.vue'
 import SoundView from '../views/SoundView.vue'
+import InfoView from '@/views/InfoView.vue'; 
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/sound',
     name: 'sound',
     component: SoundView
+  },
+  {
+    path: '/info',
+    name: 'Info',
+    component: InfoView
   }
 ]
 
