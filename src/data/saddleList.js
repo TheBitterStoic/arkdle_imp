@@ -92,6 +92,5 @@ export default [
   'Tusoteuthis_Saddle.png.jpg',
   'Velonasaur_Saddle.png.jpg',
   'Woolly_Rhino_Saddle.png.jpg',
-  'Xiphactinus_Saddle.png.jpg',
   'Yutyrannus_Saddle.png.jpg'
 ];

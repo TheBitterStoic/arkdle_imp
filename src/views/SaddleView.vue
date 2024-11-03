@@ -1,7 +1,6 @@
 <template>
   <div class="saddle-page-container">
     <div class="saddle-page">
-      <!-- Guess the Saddle Section -->
       <div class="guess-saddle-container">
         <h2>Guess the Saddle</h2>
         
@@ -10,10 +9,7 @@
           <img :src="dailySaddleImage" alt="Saddle of the Day" class="saddle-image" />
         </div>
 
-        <!-- Timer -->
-        <p v-if="!isCorrectGuess" class="timer">{{ formattedTime }}</p>
-
-        <!-- Display input and prompt only if guess is incorrect -->
+        <!-- Input and Prompt -->
         <div v-if="!isCorrectGuess" class="input-message-container">
           <p class="begin-text">Type any Dino to begin</p>
           <input
@@ -25,12 +21,12 @@
           />
         </div>
 
-        <!-- Success message overlay when the correct dino is guessed -->
+        <!-- Success Message -->
         <div v-else class="correct-message">
-          🎉 Congratulations! You've guessed today's saddle: {{ correctDino }} in {{ formattedTime }}! 🎉
+          🎉 Congratulations! You've guessed today's saddle: {{ correctDino }}! 🎉
         </div>
 
-        <!-- Dropdown List for Filtered Dinosaurs (scrollable) -->
+        <!-- Dropdown for Filtered Dinosaurs -->
         <ul v-if="searchTerm && filteredDinosaurs.length && !isCorrectGuess" class="dropdown">
           <li v-for="dino in filteredDinosaurs" :key="dino" @click="checkDinoGuess(dino)">
             {{ dino }}
@@ -39,7 +35,7 @@
         <p v-if="searchTerm && !filteredDinosaurs.length" class="no-match">No matches found</p>
       </div>
 
-      <!-- Table Section to Show Guessed Dino Names Only -->
+      <!-- Guessed Dino Table -->
       <div class="table-container">
         <table v-if="guesses.length" class="saddle-table">
           <thead>
@@ -74,8 +70,7 @@ export default {
       correctDino: null,
       isCorrectGuess: false,
       guesses: [],
-      elapsedTime: 0,
-      timerInterval: null,
+      dailyDateKey: this.getDateKey(), // Generate the date key on initialization
     };
   },
   computed: {
@@ -90,11 +85,6 @@ export default {
           !this.guesses.includes(dino)
         );
     },
-    formattedTime() {
-      const minutes = Math.floor(this.elapsedTime / 60);
-      const seconds = this.elapsedTime % 60;
-      return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    }
   },
   methods: {
     getDailyDino() {
@@ -103,9 +93,12 @@ export default {
       const diff = now - start;
       const oneDay = 1000 * 60 * 60 * 24;
       const dayOfYear = Math.floor(diff / oneDay);
-
       const index = dayOfYear % this.saddles.length;
       return this.saddles[index].replace('_Saddle.png.jpg', '');
+    },
+    getDateKey() {
+      const now = new Date();
+      return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
     },
     checkDinoGuess(dino) {
       this.isCorrectGuess = dino === this.correctDino;
@@ -117,8 +110,7 @@ export default {
       this.searchTerm = '';
 
       if (this.isCorrectGuess) {
-        clearInterval(this.timerInterval); // Stop the timer when the guess is correct
-        this.saveState();
+        this.saveState(); // Save the state when guessed correctly
       }
     },
     submitTopSuggestion() {
@@ -133,41 +125,36 @@ export default {
         return require('@/assets/saddle_images/default.png');
       }
     },
-    startTimer() {
-      this.timerInterval = setInterval(() => {
-        this.elapsedTime += 1;
-        this.saveState(); // Save the timer state on each tick
-      }, 1000);
-    },
     saveState() {
       const state = {
         isCorrectGuess: this.isCorrectGuess,
         guesses: this.guesses,
-        elapsedTime: this.elapsedTime,
       };
-      localStorage.setItem('saddleGuessState', JSON.stringify(state));
+      localStorage.setItem(`saddleGuessState-${this.dailyDateKey}`, JSON.stringify(state));
     },
     loadState() {
-      const savedState = JSON.parse(localStorage.getItem('saddleGuessState'));
+      const savedState = JSON.parse(localStorage.getItem(`saddleGuessState-${this.dailyDateKey}`));
       if (savedState) {
         this.isCorrectGuess = savedState.isCorrectGuess || false;
         this.guesses = savedState.guesses || [];
-        this.elapsedTime = savedState.elapsedTime || 0;
+      } else {
+        this.resetGame(); // If no state for today, reset the game
       }
+    },
+    resetGame() {
+      this.isCorrectGuess = false;
+      this.guesses = [];
+      this.saveState(); // Save the reset state for the new day
     },
   },
   mounted() {
     this.correctDino = this.getDailyDino();
-    this.loadState();
-    if (!this.isCorrectGuess) {
-      this.startTimer();
+    if (localStorage.getItem(`saddleGuessState-${this.dailyDateKey}`)) {
+      this.loadState();
+    } else {
+      this.resetGame();
     }
   },
-  beforeDestroy() {
-    if (this.timerInterval) {
-      clearInterval(this.timerInterval);
-    }
-  }
 };
 </script>
 
@@ -176,7 +163,7 @@ export default {
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
- background: radial-gradient(
+  background: radial-gradient(
     circle, 
     #285c74 60%, 
     #1e4c5d 90%, 
@@ -212,13 +199,6 @@ export default {
   border-radius: 8px;
 }
 
-.timer {
-  font-size: 18px;
-  color: #ffffff;
-  text-align: center;
-  margin: 10px 0;
-}
-
 .begin-text {
   color: #ffffff;
 }
@@ -240,8 +220,8 @@ export default {
   padding: 10px;
   cursor: pointer;
   text-align: center;
-  background-color: #f5f5f8; /* Light cyan background for each item */
-  color: #000000; /* Dark teal text color */
+  background-color: #f5f5f8;
+  color: #000000;
 }
 
 .no-match {
