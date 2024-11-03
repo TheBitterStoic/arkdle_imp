@@ -79,6 +79,7 @@ export default {
 h1 {
   font-size: 24px;
   margin-bottom: 10px;
+  font-family: 'Posterama', sans-serif; /* Apply Posterama font only to the heading */
 }
 
 p {

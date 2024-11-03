@@ -3,7 +3,7 @@
     <div class="dino-page">
       <!-- Guess Today's Dino Section -->
       <div class="guess-dino-container">
-        <h2>Guess Today's Dino</h2>
+        <h2 class="dino-heading">GUESS TODAY'S DINO</h2>
 
         <!-- Show input and prompt if correct guess hasn't been made -->
         <div v-if="!isCorrectGuess" class="input-message-container">
@@ -38,13 +38,13 @@
         <table v-if="guesses.length" class="dino-table">
           <thead>
             <tr>
-              <th class="table-header">Image</th>
-              <th class="table-header">Dino Name</th>
-              <th class="table-header">DLC's</th>
-              <th class="table-header">Release Date</th>
-              <th class="table-header">Temperament</th>
-              <th class="table-header">Diet</th>
-              <th class="table-header">Size</th>
+              <th class="table-header">IMAGE</th>
+              <th class="table-header">NAME</th>
+              <th class="table-header">DLC'S</th>
+              <th class="table-header">RELEASE DATE</th>
+              <th class="table-header">TEMPERAMENT</th>
+              <th class="table-header">DIET</th>
+              <th class="table-header">SIZE</th>
             </tr>
           </thead>
           <tbody>
@@ -166,7 +166,7 @@ body, html {
   margin: 0;
   padding: 0;
   overflow-y: auto;
-  font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif; /* Set a fallback font */
 }
 
 .dino-page-container {
@@ -215,6 +215,7 @@ body, html {
   margin: 0;
   font-size: 24px;
   color: #ffffff;
+  font-family: 'Posterama', sans-serif; /* Apply Posterama font only to the heading */
 }
 
 .guess-dino-container p {
@@ -584,5 +585,4 @@ body, html {
     max-height: 50px;
   }
 }
-
 </style>

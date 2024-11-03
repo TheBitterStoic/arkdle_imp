@@ -213,6 +213,7 @@ export default {
 .sound-page h2 {
   font-size: 24px;
   color: #ffffff;
+  font-family: 'Posterama', sans-serif; /* Apply Posterama font only to the heading */
 }
 
 .sound-input {

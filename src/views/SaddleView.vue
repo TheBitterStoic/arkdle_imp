@@ -176,6 +176,7 @@ export default {
 .saddle-page h2 {
   font-size: 24px;
   color: #ffffff;
+  font-family: 'Posterama', sans-serif; /* Apply Posterama font only to the heading */
 }
 
 .saddle-input {

@@ -45,7 +45,7 @@ body {
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Futura', sans-serif; /* Use Futura font */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -76,5 +76,33 @@ nav {
 
 nav a.router-link-exact-active .nav-icon {
   border-color: #42abb9;
+}
+
+/* Add the font faces for Futura */
+@font-face {
+    font-family: 'Futura';
+    src: url('@/assets/fonts/Futura Bold font.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('@/assets/fonts/Futura Book font.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('@/assets/fonts/futura medium bt.ttf') format('truetype');
+    font-weight: 500; /* Medium weight */
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Posterama';
+    src: url('@/assets/fonts/Posterama 2001 W04 Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 </style>
