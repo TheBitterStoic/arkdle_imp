@@ -182,6 +182,20 @@ body, html {
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
+.dino-page-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit; /* Use the same background */
+  border-radius: inherit;
+  filter: contrast(2 00%) brightness(0.9) blur(1px); /* Adds a noise effect */
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  opacity: 0.1;
+}
 
 .dino-page {
   padding: 20px;
@@ -308,4 +322,267 @@ body, html {
   object-fit: contain; /* Ensures the image scales correctly */
   border-radius: 4px;
 }
+@media (max-width: 765px) {
+  /* Container adjustments for mobile */
+  .dino-page-container {
+    padding: 10px;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .dino-page {
+    padding: 10px;
+  }
+
+  .guess-dino-container {
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .dropdown {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Adjust input field */
+  .dino-input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  /* Victory message adjustments */
+  .correct-message {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  /* Table adjustments for mobile */
+  .dino-table {
+    font-size: 14px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .dino-table th, .dino-table td, .image-cell {
+    padding: 6px;
+  }
+
+  .table-image {
+    width: 30px; /* Adjusted image width for smaller screens */
+    height: 30px;
+  }
+
+  /* Drop-down list items */
+  .dropdown li {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  /* Victory image size adjustment */
+  .victory-image {
+    max-width: 100px;
+    max-height: 100px;
+  }
+}
+@media (max-width: 625px) {
+  /* Further container adjustments for smaller screens */
+  .dino-page-container {
+    padding: 5px;
+  }
+
+  .guess-dino-container {
+    padding: 8px;
+    max-width: 100%;
+  }
+
+  /* Input field and dropdown adjustments */
+  .dino-input {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .dropdown li {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  /* Victory message adjustments */
+  .correct-message {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  /* Table adjustments for very small screens */
+  .dino-table {
+    font-size: 12px;
+    max-width: 100%;
+  }
+
+  .dino-table th, .dino-table td, .image-cell {
+    padding: 4px;
+  }
+
+  /* Adjust image sizes to fit better on small screens */
+  .table-image {
+    width: 25px; /* Smaller image width for very small screens */
+    height: 25px;
+  }
+
+  /* Victory image size adjustment */
+  .victory-image {
+    max-width: 80px;
+    max-height: 80px;
+  }
+}
+@media (max-width: 521px) {
+  /* Further container adjustments for ultra-small screens */
+  .dino-page-container {
+    padding: 4px;
+  }
+
+  .guess-dino-container {
+    padding: 6px;
+    max-width: 100%;
+  }
+
+  /* Input field and dropdown adjustments */
+  .dino-input {
+    font-size: 10px;
+    padding: 5px;
+  }
+
+  .dropdown li {
+    padding: 5px;
+    font-size: 10px;
+  }
+
+  /* Victory message adjustments */
+  .correct-message {
+    font-size: 10px;
+    padding: 5px;
+  }
+
+  /* Table adjustments for ultra-small screens */
+  .dino-table {
+    font-size: 10px;
+    max-width: 100%;
+  }
+
+  .dino-table th, .dino-table td, .image-cell {
+    padding: 3px;
+  }
+
+  /* Adjust image sizes to fit better on ultra-small screens */
+  .table-image {
+    width: 20px; /* Smaller image width for ultra-small screens */
+    height: 20px;
+  }
+
+  /* Victory image size adjustment */
+  .victory-image {
+    max-width: 70px;
+    max-height: 70px;
+  }
+}
+@media (max-width: 433px) {
+  /* Further container adjustments for very compact screens */
+  .dino-page-container {
+    padding: 3px;
+  }
+
+  .guess-dino-container {
+    padding: 5px;
+    max-width: 100%;
+  }
+
+  /* Input field and dropdown adjustments */
+  .dino-input {
+    font-size: 9px;
+    padding: 4px;
+  }
+
+  .dropdown li {
+    padding: 4px;
+    font-size: 9px;
+  }
+
+  /* Victory message adjustments */
+  .correct-message {
+    font-size: 9px;
+    padding: 4px;
+  }
+
+  /* Table adjustments for very compact screens */
+  .dino-table {
+    font-size: 9px;
+    max-width: 100%;
+  }
+
+  .dino-table th, .dino-table td, .image-cell {
+    padding: 2px;
+  }
+
+  /* Adjust image sizes to fit better on very compact screens */
+  .table-image {
+    width: 18px; /* Smaller image width for very compact screens */
+    height: 18px;
+  }
+
+  /* Victory image size adjustment */
+  .victory-image {
+    max-width: 60px;
+    max-height: 60px;
+  }
+}
+@media (max-width: 395px) {
+  /* Container adjustments for ultra-compact screens */
+  .dino-page-container {
+    padding: 2px;
+  }
+
+  .guess-dino-container {
+    padding: 4px;
+    max-width: 100%;
+  }
+
+  /* Input field and dropdown adjustments */
+  .dino-input {
+    font-size: 8px;
+    padding: 3px;
+  }
+
+  .dropdown li {
+    padding: 3px;
+    font-size: 8px;
+  }
+
+  /* Victory message adjustments */
+  .correct-message {
+    font-size: 8px;
+    padding: 3px;
+  }
+
+  /* Table adjustments for ultra-compact screens */
+  .dino-table {
+    font-size: 8px;
+    max-width: 100%;
+  }
+
+  .dino-table th, .dino-table td, .image-cell {
+    padding: 1px;
+  }
+
+  /* Adjust image sizes to fit better on ultra-compact screens */
+  .table-image {
+    width: 16px; /* Smaller image width for ultra-compact screens */
+    height: 16px;
+  }
+
+  /* Victory image size adjustment */
+  .victory-image {
+    max-width: 50px;
+    max-height: 50px;
+  }
+}
+
 </style>
