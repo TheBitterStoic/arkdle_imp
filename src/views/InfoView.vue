@@ -63,8 +63,14 @@ export default {
 <style scoped>
 .info-page {
   padding: 20px;
-  background-color: #4b7a97; /* Use the same background color for consistency */
+  background: radial-gradient(
+    circle, 
+    #285c74 60%, 
+    #1e4c5d 90%, 
+    #12333d 100%
+  );
   border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   color: white;
   max-width: 500px;
   margin: 0 auto;

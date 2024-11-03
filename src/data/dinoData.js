@@ -67,7 +67,7 @@ const dinoData = [
       name: 'Archaeopteryx',
       dlc: 'Base Game',
       releaseDate: '2016',
-      temperament: 'Skittish',
+      temperament: 'Fearful',
       diet: 'Herbivore',
       size: 'Small'
     },
@@ -587,7 +587,7 @@ const dinoData = [
         name: 'Jerboa',
         dlc: 'Scorched Earth',
         releaseDate: '2016',
-        temperament: 'Skittish',
+        temperament: 'Cowardly',
         diet: 'Herbivore',
         size: 'Small'
       },
@@ -667,7 +667,7 @@ const dinoData = [
         name: 'Liopleurodon',
         dlc: 'Base Game',
         releaseDate: '2017',
-        temperament: 'Docile',
+        temperament: 'Elusive',
         diet: 'Carnivore',
         size: 'Large'
       },
@@ -675,7 +675,7 @@ const dinoData = [
         name: 'Lymantria',
         dlc: 'Scorched Earth',
         releaseDate: '2016',
-        temperament: 'Skittish',
+        temperament: 'Evasive',
         diet: 'Herbivore',
         size: 'Medium'
       },
@@ -851,7 +851,7 @@ const dinoData = [
         name: 'Moschops',
         dlc: 'Base Game',
         releaseDate: '2016',
-        temperament: 'Docile',
+        temperament: 'Cowardly',
         diet: 'Herbivore',
         size: 'Medium'
       },
@@ -899,7 +899,7 @@ const dinoData = [
         name: 'Ovis',
         dlc: 'Base Game',
         releaseDate: '2016',
-        temperament: 'Passive',
+        temperament: 'Stupid',
         diet: 'Herbivore',
         size: 'Small'
       },
@@ -915,7 +915,7 @@ const dinoData = [
         name: 'Pachyrhinosaurus',
         dlc: 'Base Game',
         releaseDate: '2016',
-        temperament: 'Docile',
+        temperament: 'Evasive',
         diet: 'Herbivore',
         size: 'Large'
       },
@@ -971,7 +971,7 @@ const dinoData = [
         name: 'Phoenix',
         dlc: 'Scorched Earth',
         releaseDate: '2017',
-        temperament: 'Territorial',
+        temperament: 'Elusive',
         diet: 'Carnivore',
         size: 'Medium'
       },
@@ -1267,7 +1267,7 @@ const dinoData = [
         name: 'Trilobite',
         dlc: 'Base Game',
         releaseDate: '2015',
-        temperament: 'Docile',
+        temperament: 'Evasive',
         diet: 'Carnivore',
         size: 'Small'
       },

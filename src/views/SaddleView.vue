@@ -176,8 +176,14 @@ export default {
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #4b7a97;
+ background: radial-gradient(
+    circle, 
+    #285c74 60%, 
+    #1e4c5d 90%, 
+    #12333d 100%
+  );
   border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .saddle-page h2 {

@@ -20,6 +20,7 @@
         <!-- Success message overlay when the correct dino is guessed -->
         <div v-else class="correct-message">
           🎉 Congratulations! You've guessed today's dino: {{ correctDino }}! 🎉
+          <img :src="getDinoImage(correctDino)" alt="Dinosaur" class="victory-image" />
         </div>
 
         <!-- Dropdown List for Filtered Dinosaurs -->
@@ -37,7 +38,8 @@
         <table v-if="guesses.length" class="dino-table">
           <thead>
             <tr>
-              <th class="table-header">Dino</th>
+              <th class="table-header">Image</th>
+              <th class="table-header">Dino Name</th>
               <th class="table-header">DLC's</th>
               <th class="table-header">Release Date</th>
               <th class="table-header">Temperament</th>
@@ -49,6 +51,9 @@
             <tr v-for="guess in guesses" :key="guess.name">
               <td class="image-cell">
                 <img :src="getDinoImage(guess.name)" :alt="guess.name" class="table-image" />
+              </td>
+              <td :class="{'cell-correct': guess.name === correctDino, 'cell-incorrect': guess.name !== correctDino}">
+                {{ guess.name }}
               </td>
               <td :class="getCellClass(guess, 'dlc')">{{ guess.dlc }}</td>
               <td :class="getCellClass(guess, 'releaseDate')">{{ guess.releaseDate }}</td>
@@ -165,12 +170,17 @@ body, html {
 }
 
 .dino-page-container {
-  max-width: 500px;
+  max-width: 750px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #285c74;
+  background: radial-gradient(
+    circle, 
+    #285c74 60%, 
+    #1e4c5d 90%, 
+    #12333d 100%
+  );
   border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .dino-page {
@@ -264,6 +274,7 @@ body, html {
   max-width: 700px;
   margin-top: 20px;
   border-collapse: collapse;
+  text-align: center; /* Center the table content */
 }
 
 .dino-table th {
@@ -290,6 +301,7 @@ body, html {
 .cell-incorrect {
   background-color: #b6202f;
 }
+
 .table-image {
   width: 40px; /* Adjust this to control image width */
   height: 40px; /* Adjust this to control image height */
