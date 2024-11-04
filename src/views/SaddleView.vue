@@ -93,8 +93,7 @@ export default {
       const diff = now - start;
       const oneDay = 1000 * 60 * 60 * 24;
       const dayOfYear = Math.floor(diff / oneDay);
-      const index = dayOfYear % this.saddles.length;
-      return this.saddles[index].replace('_Saddle.png.jpg', '');
+      return this.saddles[dayOfYear % this.saddles.length].replace('_Saddle.png.jpg', '');
     },
     getDateKey() {
       const now = new Date();
@@ -105,6 +104,7 @@ export default {
 
       if (!this.guesses.includes(dino)) {
         this.guesses.unshift(dino);
+        this.saveState(); // Save the state whenever a guess is made
       }
 
       this.searchTerm = '';

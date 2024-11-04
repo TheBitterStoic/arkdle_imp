@@ -74,7 +74,6 @@
   </div>
 </template>
 
-
 <script>
 import dinoList from '@/data/dinoList';
 import dinoData from '@/data/dinoData.js';
@@ -88,6 +87,8 @@ export default {
       correctDino: null,
       isCorrectGuess: false,
       guesses: [],
+      dailyDateKey: this.getDateKey(), // Generate the date key on initialization
+      correctDinoData: null, // Store the data for the correct dino
     };
   },
   computed: {
@@ -105,10 +106,14 @@ export default {
       const start = new Date(now.getFullYear(), 0, 0);
       const diff = now - start;
       const oneDay = 1000 * 60 * 60 * 24;
-      const dayOfYear = Math.floor(diff / oneDay) ;
+      const dayOfYear = Math.floor(diff / oneDay);
 
       const index = dayOfYear % this.dinosaurs.length;
       return this.dinosaurs[index];
+    },
+    getDateKey() {
+      const now = new Date();
+      return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
     },
     checkDinoGuess(dino) {
       this.isCorrectGuess = dino === this.correctDino;
@@ -116,11 +121,11 @@ export default {
       const guessedDino = dinoData.find(d => d.name === dino);
       if (guessedDino && !this.guesses.some(guess => guess.name === guessedDino.name)) {
         this.guesses.unshift(guessedDino);
-        this.saveState();
+        this.saveState(); // Save the state whenever a guess is made
       }
 
       if (this.isCorrectGuess) {
-        this.saveState();
+        this.saveState(); // Save the state when guessed correctly
       }
 
       this.searchTerm = '';
@@ -146,20 +151,29 @@ export default {
         isCorrectGuess: this.isCorrectGuess,
         guesses: this.guesses,
       };
-      localStorage.setItem('dinoGuessState', JSON.stringify(state));
+      localStorage.setItem(`dinoGuessState-${this.dailyDateKey}`, JSON.stringify(state));
     },
     loadState() {
-      const savedState = JSON.parse(localStorage.getItem('dinoGuessState'));
+      const savedState = JSON.parse(localStorage.getItem(`dinoGuessState-${this.dailyDateKey}`));
       if (savedState) {
-        this.isCorrectGuess = savedState.isCorrectGuess;
+        this.isCorrectGuess = savedState.isCorrectGuess || false;
         this.guesses = savedState.guesses || [];
       }
     },
+    resetGame() {
+      this.isCorrectGuess = false;
+      this.guesses = [];
+      this.saveState(); // Save the reset state for the new day
+    }
   },
   mounted() {
     this.correctDino = this.getDailyDino();
     this.correctDinoData = dinoData.find(d => d.name === this.correctDino);
-    this.loadState();
+    if (localStorage.getItem(`dinoGuessState-${this.dailyDateKey}`)) {
+      this.loadState();
+    } else {
+      this.resetGame();
+    }
   },
   watch: {
     guesses: 'saveState',
@@ -169,6 +183,7 @@ export default {
 </script>
 
 <style scoped>
+/* Add your styles here */
 body, html {
   margin: 0;
   padding: 0;
@@ -203,14 +218,12 @@ body, html {
   background-position: center;
   opacity: 0.2; /* Adjust opacity */
   z-index: 1; /* Place behind other content */
-
 }
 
 .dino-page-container > * {
   position: relative; /* Ensure content appears above overlay */
   z-index: 2; /* Ensure it is above the overlay */
 }
-
 
 .dino-page {
   padding: 20px;

@@ -60,7 +60,7 @@
 
 <script>
 import soundList from '@/data/soundList';
-import dinoList from '@/data/dinoList'; // Import dino list
+import dinoList from '@/data/dinoList';
 
 export default {
   name: 'SoundView',
@@ -81,7 +81,7 @@ export default {
   computed: {
     filteredDinosaurs() {
       return this.soundFiles
-        .map(file => file.replace('sound.ogg', ''))
+        .map(file => file.replace('sound.mp3', ''))
         .filter(dino => 
           dino.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
           !this.guesses.includes(dino)
@@ -97,13 +97,13 @@ export default {
       const start = new Date(now.getFullYear(), 0, 0);
       const dayOfYear = Math.floor((now - start) / (1000 * 60 * 60 * 24));
       const index = dayOfYear % this.soundFiles.length;
-      return this.soundFiles[index].replace('sound.ogg', '');
+      return this.soundFiles[index].replace('sound.mp3', '');
     },
     getDinoImage(dinoName) {
       try {
-        return require(`@/assets/dino_images/${dinoName}.png`); // Adjust the path as necessary
+        return require(`@/assets/dino_images/${dinoName}.png`);
       } catch (e) {
-        return require('@/assets/dino_images/default.png'); // Default image if the specific dino image is not found
+        return require('@/assets/dino_images/default.png');
       }
     },
     playSound() {
@@ -112,8 +112,7 @@ export default {
       }
     },
     checkDinoGuess(dino) {
-      // Prevent further guesses after reaching a limit of incorrect guesses
-      if (this.incorrectGuesses >= 10) {
+      if (this.incorrectGuesses >= 100) {
         alert("You've reached the maximum number of incorrect guesses.");
         return;
       }
@@ -125,13 +124,12 @@ export default {
         
         if (!this.isCorrectGuess) {
           this.incorrectGuesses += 1;
-          this.updateHint(); // Update the hint if the guess is incorrect
+          this.updateHint();
         }
       }
       
-      // Clear the search term and save the state
       this.searchTerm = '';
-      this.saveState(); // Save state after checking guess
+      this.saveState();
     },
     submitTopSuggestion() {
       if (this.filteredDinosaurs.length > 0) {
@@ -139,20 +137,19 @@ export default {
       }
     },
     updateHint() {
-      if (this.incorrectGuesses >= 5) {
-        const revealLetters = Math.floor(this.incorrectGuesses / 2); 
-        let hintArray = this.revealedHint.split('');
+      const revealLetters = Math.floor(this.incorrectGuesses / 2);
+      let hintArray = this.revealedHint.split('');
 
-        while (this.revealedIndices.size < revealLetters) {
-          const randomIndex = Math.floor(Math.random() * this.correctDino.length);
+      while (this.revealedIndices.size < revealLetters && this.revealedIndices.size < this.correctDino.length) {
+        const randomIndex = Math.floor(Math.random() * this.correctDino.length);
 
-          if (!this.revealedIndices.has(randomIndex)) {
-            this.revealedIndices.add(randomIndex);
-            hintArray[randomIndex] = this.correctDino[randomIndex];
-          }
+        if (!this.revealedIndices.has(randomIndex)) {
+          this.revealedIndices.add(randomIndex);
+          hintArray[randomIndex] = this.correctDino[randomIndex];
         }
-        this.revealedHint = hintArray.join('');
       }
+
+      this.revealedHint = hintArray.join('');
     },
     getDateKey() {
       const now = new Date();
@@ -189,10 +186,9 @@ export default {
   },
   mounted() {
     this.correctDino = this.getDailyDino();
-    this.revealedHint = '_'.repeat(this.correctDino.length); // Initialize hint with underscores
-    this.sound = new Audio(require(`@/assets/sound_files/${this.correctDino}sound.ogg`));
+    this.revealedHint = '_'.repeat(this.correctDino.length);
+    this.sound = new Audio(require(`@/assets/sound_files/${this.correctDino}sound.mp3`));
 
-    // Load state if the date matches today, otherwise reset
     if (localStorage.getItem(`soundGuessState-${this.dailyDateKey}`)) {
       this.loadState();
     } else {
