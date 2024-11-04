@@ -35,14 +35,15 @@ body {
   margin: 0;
   height: 100vh;
   overflow-y: scroll; /* Enable scrollbar */
-  background-color: #f5f5f5;
-  background-image: radial-gradient(circle, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.5) 60%), 
-                    url('@/assets/ArkBackground.jpg');
+  background-color: #f5f5f5; /* Fallback color */
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1)), /* Dark to transparent gradient */
+  url('@/assets/ArkBackground.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed; /* Keeps background fixed during scroll */
 }
+
 
 #app {
   font-family: 'Futura', sans-serif; /* Use Futura font */
@@ -70,12 +71,13 @@ nav {
   width: 40px;
   height: 40px;
   cursor: pointer;
-  border: 2px solid #ffffff;
+  border: 2px solid #408aa5;
   border-radius: 0px;
+  background-color: #285c74;
 }
 
 nav a.router-link-exact-active .nav-icon {
-  border-color: #42abb9;
+  border-color: #CFB53B;
 }
 
 /* Add the font faces for Futura */
@@ -104,5 +106,25 @@ nav a.router-link-exact-active .nav-icon {
     src: url('@/assets/fonts/Posterama 2001 W04 Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+}
+@media (max-width: 375px) {
+  .logo {
+    width: 150px; /* Reduce logo size for smaller screens */
+  }
+
+  nav {
+    padding: 5px; /* Adjust padding for navigation */
+    flex-direction: row; /* Stack nav icons vertically */
+    gap: 15px; /* Reduce space between icons */
+  }
+
+  .nav-icon {
+    width: 40px; /* Reduce icon size */
+    height: 40px; /* Maintain aspect ratio */
+  }
+
+  nav a.router-link-exact-active .nav-icon {
+    border-color: #CFB53B; /* Keep border color change for active link */
+  }
 }
 </style>

@@ -160,22 +160,43 @@ export default {
 
 <style scoped>
 .saddle-page-container {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 500px; /* Set the maximum width */
+  margin: 0 auto; /* Center the container */
+  padding: 20px; /* Add padding */
   background: radial-gradient(
     circle, 
     #285c74 60%, 
     #1e4c5d 90%, 
     #12333d 100%
-  );
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  ); /* Background gradient */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  position: relative; /* Required for absolute positioning of overlay */
 }
+
+.saddle-page-container::before {
+  content: ''; /* Empty content for the overlay */
+  position: absolute; /* Position it absolutely */
+  top: 0; /* Align to top */
+  left: 0; /* Align to left */
+  right: 0; /* Align to right */
+  bottom: 0; /* Align to bottom */
+  background-image: url('@/assets/overlay.jpg'); /* Overlay image path */
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the overlay image */
+  opacity: 0.2; /* Set the opacity for the overlay */
+  z-index: 1; /* Place behind other content */
+}
+
+.saddle-page-container > * {
+  position: relative; /* Ensure content appears above overlay */
+  z-index: 2; /* Ensure it is above the overlay */
+}
+
 
 .saddle-page h2 {
   font-size: 24px;
-  color: #ffffff;
+  color: #88e9ff;
   font-family: 'Posterama', sans-serif; /* Apply Posterama font only to the heading */
 }
 
@@ -252,8 +273,7 @@ export default {
 }
 
 .saddle-table th {
-  background-color: #ffffff;
-  color: #333;
+  color: #88e9ff;
   padding: 8px;
   border: 1px solid #ddd;
 }
@@ -271,4 +291,34 @@ export default {
 .row-incorrect {
   background-color: #b6202f;
 }
+@media (max-width: 600px) {
+  .saddle-page-container {
+    max-width: 80%; /* Allow the container to take up more space */
+    padding: 10px; /* Reduce padding */
+  }
+
+  .saddle-input {
+    font-size: 14px; /* Decrease font size for input */
+    padding: 8px; /* Reduce padding in the input field */
+  }
+
+  .saddle-image {
+    width: 150px; /* Reduce the width of the saddle image */
+  }
+
+  .saddle-table {
+    max-width: 80%; /* Allow the table to take the full width */
+  }
+
+  .saddle-table th, .saddle-table td {
+    padding: 6px; /* Reduce padding in table cells */
+    font-size: 14px; /* Decrease font size for table text */
+  }
+
+  .correct-message {
+    font-size: 14px; /* Decrease font size for the success message */
+    padding: 8px; /* Reduce padding in the success message */
+  }
+}
+
 </style>

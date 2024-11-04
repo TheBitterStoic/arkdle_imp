@@ -1,1365 +1,1704 @@
 const dinoData = [
-    {
-      name: 'Achatina',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Docile',
-      diet: 'Herbivore',
-      size: 'Small'
-    },
-    {
-      name: 'Allosaurus',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Large'
-    },
-    {
-      name: 'Amargasaurus',
-      dlc: 'Lost Island',
-      releaseDate: '2021',
-      temperament: 'Aggressive',
-      diet: 'Herbivore',
-      size: 'Large'
-    },
-    {
-      name: 'Ammonite',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Defensive',
-      diet: 'Carnivore',
-      size: 'Small'
-    },
-    {
-      name: 'Andrewsarchus',
-      dlc: 'Fjordur',
-      releaseDate: '2022',
-      temperament: 'Neutral',
-      diet: 'Omnivore',
-      size: 'Large'
-    },
-    {
-      name: 'Angler',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Medium'
-    },
-    {
-      name: 'Ankylosaurus',
-      dlc: 'Base Game',
-      releaseDate: '2015',
-      temperament: 'Docile',
-      diet: 'Herbivore',
-      size: 'Medium'
-    },
-    {
-      name: 'Araneo',
-      dlc: 'Base Game',
-      releaseDate: '2015',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Medium'
-    },
-    {
-      name: 'Archaeopteryx',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Fearful',
-      diet: 'Herbivore',
-      size: 'Small'
-    },
-    {
-      name: 'Argentavis',
-      dlc: 'Base Game',
-      releaseDate: '2015',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Large'
-    },
-    {
-      name: 'Arthropluera',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Medium'
-    },
-    {
-      name: 'Astrocetus',
-      dlc: 'Genesis: Part 1',
-      releaseDate: '2020',
-      temperament: 'Territorial',
-      diet: 'Carnivore',
-      size: 'Extra Large'
-    },
-    {
-      name: 'Astrodelphis',
-      dlc: 'Genesis: Part 2',
-      releaseDate: '2021',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Medium'
-    },
-    {
-      name: 'Attack Drone',
-      dlc: 'Base Game',
-      releaseDate: '2017',
-      temperament: 'Aggressive',
-      diet: 'None',
-      size: 'Small'
-    },
-    {
-      name: 'Baryonyx',
-      dlc: 'Base Game',
-      releaseDate: '2017',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Medium'
-    },
-    {
-      name: 'Basilisk',
-      dlc: 'Aberration',
-      releaseDate: '2017',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Large'
-    },
-    {
-      name: 'Basilosaurus',
-      dlc: 'Base Game',
-      releaseDate: '2017',
-      temperament: 'Docile',
-      diet: 'Carnivore',
-      size: 'Extra Large'
-    },
-    {
-      name: 'Beelzebufo',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Docile',
-      diet: 'Carnivore',
-      size: 'Medium'
-    },
-    {
-      name: 'Bloodstalker',
-      dlc: 'Genesis: Part 1',
-      releaseDate: '2020',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Large'
-    },
-    {
-      name: 'Brontosaurus',
-      dlc: 'Base Game',
-      releaseDate: '2015',
-      temperament: 'Docile',
-      diet: 'Herbivore',
-      size: 'Extra Large'
-    },
-    {
-      name: 'Bulbdog',
-      dlc: 'Aberration',
-      releaseDate: '2017',
-      temperament: 'Passive',
-      diet: 'Herbivore',
-      size: 'Small'
-    },
-    {
-      name: 'Carbonemys',
-      dlc: 'Base Game',
-      releaseDate: '2015',
-      temperament: 'Docile',
-      diet: 'Herbivore',
-      size: 'Medium'
-    },
-    {
-      name: 'Carcharodontosaurus',
-      dlc: 'Base Game',
-      releaseDate: '2022',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Extra Large'
-    },
-    {
-      name: 'Carnotaurus',
-      dlc: 'Base Game',
-      releaseDate: '2015',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Large'
-    },
-    {
-      name: 'Castoroides',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Territorial',
-      diet: 'Herbivore',
-      size: 'Medium'
-    },
-    {
-      name: 'Chalicotherium',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Territorial',
-      diet: 'Herbivore',
-      size: 'Large'
-    },
-    {
-      name: 'Cnidaria',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Small'
-    },
-    {
-      name: 'Coelacanth',
-      dlc: 'Base Game',
-      releaseDate: '2015',
-      temperament: 'Docile',
-      diet: 'Carnivore',
-      size: 'Small'
-    },
-    {
-      name: 'Compy',
-      dlc: 'Base Game',
-      releaseDate: '2015',
-      temperament: 'Inquisitive',
-      diet: 'Carnivore',
-      size: 'Small'
-    },
-    {
-      name: 'Crystal Wyvern',
-      dlc: 'Crystal Isles',
-      releaseDate: '2020',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Extra Large'
-    },
-    {
-      name: 'Daeodon',
-      dlc: 'Base Game',
-      releaseDate: '2017',
-      temperament: 'Aggressive',
-      diet: 'Omnivore',
-      size: 'Medium'
-    },
-    {
-      name: 'Deathworm',
-      dlc: 'Scorched Earth',
-      releaseDate: '2016',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Extra Large'
-    },
-    {
-      name: 'Defense Unit',
-      dlc: 'Base Game',
-      releaseDate: '2017',
-      temperament: 'Aggressive',
-      diet: 'None',
-      size: 'Medium'
-    },
-    {
-      name: 'Deinonychus',
-      dlc: 'Valguero',
-      releaseDate: '2019',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Medium'
-    },
-    {
-      name: 'Desert Titan',
-      dlc: 'Extinction',
-      releaseDate: '2018',
-      temperament: 'Aggressive',
-      diet: 'None',
-      size: 'Titan'
-    },
-    {
-      name: 'Desmodus',
-      dlc: 'Fjordur',
-      releaseDate: '2022',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Medium'
-    },
-    {
-      name: 'Dilophosaur',
-      dlc: 'Base Game',
-      releaseDate: '2015',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Small'
-    },
-    {
-      name: 'Dimetrodon',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Docile',
-      diet: 'Carnivore',
-      size: 'Medium'
-    },
-    {
-      name: 'Dimorphodon',
-      dlc: 'Base Game',
-      releaseDate: '2015',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Small'
-    },
-    {
-      name: 'Dinopithecus',
-      dlc: 'Lost Island',
-      releaseDate: '2021',
-      temperament: 'Aggressive',
-      diet: 'Omnivore',
-      size: 'Large'
-    },
-    {
-      name: 'Diplocaulus',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Skittish',
-      diet: 'Carnivore',
-      size: 'Small'
-    },
-    {
-      name: 'Diplodocus',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Docile',
-      diet: 'Herbivore',
-      size: 'Large'
-    },
-    {
-      name: 'Direbear',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Territorial',
-      diet: 'Omnivore',
-      size: 'Large'
-    },
-    {
-      name: 'Direwolf',
-      dlc: 'Base Game',
-      releaseDate: '2015',
-      temperament: 'Aggressive',
-      diet: 'Carnivore',
-      size: 'Medium'
-    },
-    {
-      name: 'Dodo',
-      dlc: 'Base Game',
-      releaseDate: '2015',
-      temperament: 'Docile',
-      diet: 'Herbivore',
-      size: 'Small'
-    },
-    {
-      name: 'Doedicurus',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Docile',
-      diet: 'Herbivore',
-      size: 'Medium'
-    },
-    {
-      name: 'Dung Beetle',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Passive',
-      diet: 'Detritivore',
-      size: 'Small'
-    },
-    {
-      name: 'Dunkleosteus',
-      dlc: 'Base Game',
-      releaseDate: '2016',
-      temperament: 'Docile',
-      diet: 'Carnivore',
-      size: 'Large'
-    },
-    {
-        name: 'Electrophorus',
-        dlc: 'Base Game',
-        releaseDate: '2017',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Enforcer',
-        dlc: 'Extinction',
-        releaseDate: '2018',
-        temperament: 'Docile',
-        diet: 'None',
-        size: 'Medium'
-      },
-      {
-        name: 'Equus',
-        dlc: 'Base Game',
-        releaseDate: '2017',
-        temperament: 'Skittish',
-        diet: 'Herbivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Eurypterid',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Featherlight',
-        dlc: 'Aberration',
-        releaseDate: '2017',
-        temperament: 'Passive',
-        diet: 'Herbivore',
-        size: 'Small'
-      },
-      {
-        name: 'Fenrir',
-        dlc: 'Fjordur',
-        releaseDate: '2022',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Ferox',
-        dlc: 'Genesis: Part 1',
-        releaseDate: '2020',
-        temperament: 'Docile',
-        diet: 'Omnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Fjordhawk',
-        dlc: 'Fjordur',
-        releaseDate: '2022',
-        temperament: 'Passive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Forest Titan',
-        dlc: 'Extinction',
-        releaseDate: '2018',
-        temperament: 'Aggressive',
-        diet: 'None',
-        size: 'Titan'
-      },
-      {
-        name: 'Gacha',
-        dlc: 'Extinction',
-        releaseDate: '2018',
-        temperament: 'Passive',
-        diet: 'Omnivore',
-        size: 'Large'
-      },
-      {
-        name: 'Gallimimus',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Skittish',
-        diet: 'Herbivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Gasbags',
-        dlc: 'Extinction',
-        releaseDate: '2018',
-        temperament: 'Passive',
-        diet: 'Herbivore',
-        size: 'Large'
-      },
-      {
-        name: 'Giant Bee',
-        dlc: 'Base Game',
-        releaseDate: '2017',
-        temperament: 'Aggressive',
-        diet: 'Herbivore',
-        size: 'Small'
-      },
-      {
-        name: 'Giganotosaurus',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Extra Large'
-      },
-      {
-        name: 'Gigantopithecus',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Territorial',
-        diet: 'Herbivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Glowbug',
-        dlc: 'Aberration',
-        releaseDate: '2017',
-        temperament: 'Docile',
-        diet: 'None',
-        size: 'Small'
-      },
-      {
-        name: 'Glowtail',
-        dlc: 'Aberration',
-        releaseDate: '2017',
-        temperament: 'Passive',
-        diet: 'Herbivore',
-        size: 'Small'
-      },
-      {
-        name: 'Griffin',
-        dlc: 'Ragnarok',
-        releaseDate: '2017',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Large'
-      },
-      {
-        name: 'Hesperornis',
-        dlc: 'Base Game',
-        releaseDate: '2017',
-        temperament: 'Territorial',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Hyaenodon',
-        dlc: 'Base Game',
-        releaseDate: '2017',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Ice Titan',
-        dlc: 'Extinction',
-        releaseDate: '2018',
-        temperament: 'Aggressive',
-        diet: 'None',
-        size: 'Titan'
-      },
-      {
-        name: 'Ichthyornis',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Ichthyosaurus',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Docile',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Iguanodon',
-        dlc: 'Base Game',
-        releaseDate: '2017',
-        temperament: 'Docile',
-        diet: 'Herbivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Insect Swarm',
-        dlc: 'Genesis: Part 1',
-        releaseDate: '2020',
-        temperament: 'Aggressive',
-        diet: 'None',
-        size: 'Small'
-      },
-      {
-        name: 'Jerboa',
-        dlc: 'Scorched Earth',
-        releaseDate: '2016',
-        temperament: 'Cowardly',
-        diet: 'Herbivore',
-        size: 'Small'
-      },
-      {
-        name: 'Jug Bug',
-        dlc: 'Scorched Earth',
-        releaseDate: '2016',
-        temperament: 'Docile',
-        diet: 'Herbivore',
-        size: 'Small'
-      },
-      {
-        name: 'Kairuku',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Docile',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Kaprosuchus',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Karkinos',
-        dlc: 'Aberration',
-        releaseDate: '2017',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Large'
-      },
-      {
-        name: 'Kentrosaurus',
-        dlc: 'Base Game',
-        releaseDate: '2017',
-        temperament: 'Aggressive',
-        diet: 'Herbivore',
-        size: 'Medium'
-      },
-      {
-        name: 'King Titan',
-        dlc: 'Extinction',
-        releaseDate: '2018',
-        temperament: 'Aggressive',
-        diet: 'None',
-        size: 'Titan'
-      },
-      {
-        name: 'Lamprey',
-        dlc: 'Aberration',
-        releaseDate: '2017',
-        temperament: 'Passive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Leech',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Leedsichthys',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Docile',
-        diet: 'Carnivore',
-        size: 'Extra Large'
-      },
-      {
-        name: 'Liopleurodon',
-        dlc: 'Base Game',
-        releaseDate: '2017',
-        temperament: 'Elusive',
-        diet: 'Carnivore',
-        size: 'Large'
-      },
-      {
-        name: 'Lymantria',
-        dlc: 'Scorched Earth',
-        releaseDate: '2016',
-        temperament: 'Evasive',
-        diet: 'Herbivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Lystrosaurus',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Passive',
-        diet: 'Herbivore',
-        size: 'Small'
-      },
-      {
-        name: 'Maewing',
-        dlc: 'Genesis: Part 2',
-        releaseDate: '2021',
-        temperament: 'Docile',
-        diet: 'Omnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Magmasaur',
-        dlc: 'Genesis: Part 1',
-        releaseDate: '2020',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Large'
-      },
-      {
-        name: 'Mammoth',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Docile',
-        diet: 'Herbivore',
-        size: 'Large'
-      },
-      {
-        name: 'Managarmr',
-        dlc: 'Extinction',
-        releaseDate: '2018',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Large'
-      },
-      {
-        name: 'Manta',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Manticore',
-        dlc: 'Scorched Earth',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Boss'
-      },
-      {
-        name: 'Mantis',
-        dlc: 'Scorched Earth',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Megachelon',
-        dlc: 'Genesis: Part 1',
-        releaseDate: '2020',
-        temperament: 'Passive',
-        diet: 'Herbivore',
-        size: 'Extra Large'
-      },
-      {
-        name: 'Megalania',
-        dlc: 'Base Game',
-        releaseDate: '2017',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Megaloceros',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Skittish',
-        diet: 'Herbivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Megalodon',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Large'
-      },
-      {
-        name: 'Megalosaurus',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Meganeura',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Megatherium',
-        dlc: 'Base Game',
-        releaseDate: '2017',
-        temperament: 'Docile',
-        diet: 'Omnivore',
-        size: 'Large'
-      },
-      {
-        name: 'Mek',
-        dlc: 'Extinction',
-        releaseDate: '2018',
-        temperament: 'Docile',
-        diet: 'None',
-        size: 'Large'
-      },
-      {
-        name: 'Mesopithecus',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Passive',
-        diet: 'Omnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Microraptor',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Moeder',
-        dlc: 'Genesis: Part 1',
-        releaseDate: '2020',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Boss'
-      },
-      {
-        name: 'Morellatops',
-        dlc: 'Scorched Earth',
-        releaseDate: '2016',
-        temperament: 'Docile',
-        diet: 'Herbivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Mosasaurus',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Extra Large'
-      },
-      {
-        name: 'Moschops',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Cowardly',
-        diet: 'Herbivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Nameless',
-        dlc: 'Aberration',
-        releaseDate: '2017',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Noglin',
-        dlc: 'Genesis: Part 2',
-        releaseDate: '2021',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Onyc',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Otter',
-        dlc: 'Base Game',
-        releaseDate: '2017',
-        temperament: 'Passive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Oviraptor',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Skittish',
-        diet: 'Omnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Ovis',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Stupid',
-        diet: 'Herbivore',
-        size: 'Small'
-      },
-      {
-        name: 'Pachy',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Docile',
-        diet: 'Herbivore',
-        size: 'Small'
-      },
-      {
-        name: 'Pachyrhinosaurus',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Evasive',
-        diet: 'Herbivore',
-        size: 'Large'
-      },
-      {
-        name: 'Paraceratherium',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Docile',
-        diet: 'Herbivore',
-        size: 'Extra Large'
-      },
-      {
-        name: 'Parakeet Fish School',
-        dlc: 'Genesis: Part 1',
-        releaseDate: '2020',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Parasaur',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Skittish',
-        diet: 'Herbivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Pegomastax',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Herbivore',
-        size: 'Small'
-      },
-      {
-        name: 'Pelagornis',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Skittish',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Phiomia',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Skittish',
-        diet: 'Herbivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Phoenix',
-        dlc: 'Scorched Earth',
-        releaseDate: '2017',
-        temperament: 'Elusive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Piranha',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Plesiosaur',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Docile',
-        diet: 'Carnivore',
-        size: 'Extra Large'
-      },
-      {
-        name: 'Procoptodon',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Docile',
-        diet: 'Herbivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Pteranodon',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Skittish',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Pulmonoscorpius',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Purlovia',
-        dlc: 'Base Game',
-        releaseDate: '2017',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Quetzal',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Docile',
-        diet: 'Carnivore',
-        size: 'Extra Large'
-      },
-      {
-        name: 'Raptor',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Ravager',
-        dlc: 'Aberration',
-        releaseDate: '2017',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Reaper',
-        dlc: 'Aberration',
-        releaseDate: '2017',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Extra Large'
-      },
-      {
-        name: 'Rex',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Extra Large'
-      },
-      {
-        name: 'Rock Drake',
-        dlc: 'Aberration',
-        releaseDate: '2017',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Large'
-      },
-      {
-        name: 'Rock Elemental',
-        dlc: 'Scorched Earth',
-        releaseDate: '2016',
-        temperament: 'Territorial',
-        diet: 'Mineralivore',
-        size: 'Extra Large'
-      },
-      {
-        name: 'Roll Rat',
-        dlc: 'Aberration',
-        releaseDate: '2017',
-        temperament: 'Territorial',
-        diet: 'Herbivore',
-        size: 'Large'
-      },
-      {
-        name: 'Sabertooth Salmon',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Sabertooth',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Sarco',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Large'
-      },
-      {
-        name: 'Scout',
-        dlc: 'Extinction',
-        releaseDate: '2018',
-        temperament: 'Docile',
-        diet: 'None',
-        size: 'Small'
-      },
-      {
-        name: 'Seeker',
-        dlc: 'Aberration',
-        releaseDate: '2017',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Shadowmane',
-        dlc: 'Genesis: Part 2',
-        releaseDate: '2021',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Large'
-      },
-      {
-        name: 'Shinehorn',
-        dlc: 'Aberration',
-        releaseDate: '2017',
-        temperament: 'Passive',
-        diet: 'Herbivore',
-        size: 'Small'
-      },
-      {
-        name: 'Sinomacrops',
-        dlc: 'Lost Island',
-        releaseDate: '2021',
-        temperament: 'Skittish',
-        diet: 'Herbivore',
-        size: 'Small'
-      },
-      {
-        name: 'Snow Owl',
-        dlc: 'Extinction',
-        releaseDate: '2018',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Large'
-      },
-      {
-        name: 'Spinosaurus',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Extra Large'
-      },
-      {
-        name: 'Stegosaurus',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Docile',
-        diet: 'Herbivore',
-        size: 'Large'
-      },
-      {
-        name: 'Summoner',
-        dlc: 'Genesis: Part 2',
-        releaseDate: '2021',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Tapejara',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Skittish',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Tek Stryder',
-        dlc: 'Genesis: Part 2',
-        releaseDate: '2021',
-        temperament: 'Docile',
-        diet: 'None',
-        size: 'Extra Large'
-      },
-      {
-        name: 'Terror Bird',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Therizinosaurus',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Territorial',
-        diet: 'Herbivore',
-        size: 'Large'
-      },
-      {
-        name: 'Thorny Dragon',
-        dlc: 'Scorched Earth',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Herbivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Thylacoleo',
-        dlc: 'Base Game',
-        releaseDate: '2017',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Titanoboa',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Titanomyrma',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Titanosaur',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Docile',
-        diet: 'Herbivore',
-        size: 'Titan'
-      },
-      {
-        name: 'Triceratops',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Defensive',
-        diet: 'Herbivore',
-        size: 'Large'
-      },
-      {
-        name: 'Trilobite',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Evasive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Troodon',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Tropeognathus',
-        dlc: 'Crystal Isles',
-        releaseDate: '2020',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Large'
-      },
-      {
-        name: 'Tusoteuthis',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Extra Large'
-      },
-      {
-        name: 'Unicorn',
-        dlc: 'Base Game',
-        releaseDate: '2017',
-        temperament: 'Skittish',
-        diet: 'Herbivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Velonasaur',
-        dlc: 'Extinction',
-        releaseDate: '2018',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Medium'
-      },
-      {
-        name: 'Voidwyrm',
-        dlc: 'Genesis: Part 2',
-        releaseDate: '2021',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Large'
-      },
-      {
-        name: 'Vulture',
-        dlc: 'Scorched Earth',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Small'
-      },
-      {
-        name: 'Woolly Rhino',
-        dlc: 'Base Game',
-        releaseDate: '2015',
-        temperament: 'Docile',
-        diet: 'Herbivore',
-        size: 'Large'
-      },
-      {
-        name: 'Wyvern',
-        dlc: 'Scorched Earth',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Extra Large'
-      },
-      {
-        name: 'Yeti',
-        dlc: 'Base Game',
-        releaseDate: '2016',
-        temperament: 'Aggressive',
-        diet: 'Herbivore',
-        size: 'Extra Large'
-      },
-      {
-        name: 'Yutyrannus',
-        dlc: 'Base Game',
-        releaseDate: '2017',
-        temperament: 'Aggressive',
-        diet: 'Carnivore',
-        size: 'Large'
-      }
-  ];
-  
-  export default dinoData;
-  
+  {
+    name: 'Achatina',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Small',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Allosaurus',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Amargasaurus',
+    dlc: 'Lost Island',
+    releaseDate: '2021',
+    temperament: 'Aggressive',
+    diet: 'Herbivore',
+    size: 'Large',
+    biome: 'Temperate Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Ammonite',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Defensive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Andrewsarchus',
+    dlc: 'Fjordur',
+    releaseDate: '2022',
+    temperament: 'Neutral',
+    diet: 'Omnivore',
+    size: 'Large',
+    biome: 'Mountains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Angler',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Ankylosaurus',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Araneo',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Archaeopteryx',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Fearful',
+    diet: 'Herbivore',
+    size: 'Small',
+    biome: 'Forest',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Argentavis',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Mountain',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Arthropluera',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Astrocetus',
+    dlc: 'Genesis: Part 1',
+    releaseDate: '2020',
+    temperament: 'Territorial',
+    diet: 'Carnivore',
+    size: 'Extra Large',
+    biome: 'Space',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Astrodelphis',
+    dlc: 'Genesis: Part 2',
+    releaseDate: '2021',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Space',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Attack Drone',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'None',
+    size: 'Small',
+    biome: 'Technology',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Baryonyx',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Swamp',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Basilisk',
+    dlc: 'Aberration',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Basilosaurus',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Docile',
+    diet: 'Carnivore',
+    size: 'Extra Large',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Beelzebufo',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Docile',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Swamp',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Bloodstalker',
+    dlc: 'Genesis: Part 1',
+    releaseDate: '2020',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Brontosaurus',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Extra Large',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Bulbdog',
+    dlc: 'Aberration',
+    releaseDate: '2017',
+    temperament: 'Passive',
+    diet: 'Herbivore',
+    size: 'Small',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Carbonemys',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Swamp',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Carcharodontosaurus',
+    dlc: 'Base Game',
+    releaseDate: '2022',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Extra Large',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Carnotaurus',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Castoroides',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Territorial',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Swamp',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Chalicotherium',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Territorial',
+    diet: 'Herbivore',
+    size: 'Large',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Cnidaria',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Coelacanth',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Docile',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Compy',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Inquisitive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Crystal Wyvern',
+    dlc: 'Crystal Isles',
+    releaseDate: '2020',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Extra Large',
+    biome: 'Tropical',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Daeodon',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Omnivore',
+    size: 'Medium',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Deathworm',
+    dlc: 'Scorched Earth',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Extra Large',
+    biome: 'Desert',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Defense Unit',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'None',
+    size: 'Medium',
+    biome: 'Technology',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Deinonychus',
+    dlc: 'Valguero',
+    releaseDate: '2019',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Woodland',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Desert Titan',
+    dlc: 'Extinction',
+    releaseDate: '2018',
+    temperament: 'Aggressive',
+    diet: 'None',
+    size: 'Titan',
+    biome: 'Desert',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Desmodus',
+    dlc: 'Fjordur',
+    releaseDate: '2022',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Dilophosaur',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Dimetrodon',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Docile',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Swamp',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Dimorphodon',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Forest',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Dinopithecus',
+    dlc: 'Lost Island',
+    releaseDate: '2021',
+    temperament: 'Aggressive',
+    diet: 'Omnivore',
+    size: 'Large',
+    biome: 'Jungle',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Diplocaulus',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Skittish',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Swamp',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Diplodocus',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Large',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Direbear',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Territorial',
+    diet: 'Omnivore',
+    size: 'Large',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Direwolf',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Snowy Mountains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Dodo',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Small',
+    biome: 'Beach',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Doedicurus',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Desert',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Dung Beetle',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Passive',
+    diet: 'Detritivore',
+    size: 'Small',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Dunkleosteus',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Docile',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Electrophorus',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Enforcer',
+    dlc: 'Extinction',
+    releaseDate: '2018',
+    temperament: 'Docile',
+    diet: 'None',
+    size: 'Medium',
+    biome: 'Technology',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Equus',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Skittish',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Eurypterid',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Featherlight',
+    dlc: 'Aberration',
+    releaseDate: '2017',
+    temperament: 'Passive',
+    diet: 'Herbivore',
+    size: 'Small',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Fenrir',
+    dlc: 'Fjordur',
+    releaseDate: '2022',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Snowy Mountains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Ferox',
+    dlc: 'Genesis: Part 1',
+    releaseDate: '2020',
+    temperament: 'Docile',
+    diet: 'Omnivore',
+    size: 'Small',
+    biome: 'Tropical Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Fjordhawk',
+    dlc: 'Fjordur',
+    releaseDate: '2022',
+    temperament: 'Passive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Tropical',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Forest Titan',
+    dlc: 'Extinction',
+    releaseDate: '2018',
+    temperament: 'Aggressive',
+    diet: 'None',
+    size: 'Titan',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Gacha',
+    dlc: 'Extinction',
+    releaseDate: '2018',
+    temperament: 'Passive',
+    diet: 'Omnivore',
+    size: 'Large',
+    biome: 'Tropical',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Gallimimus',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Skittish',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Gasbags',
+    dlc: 'Extinction',
+    releaseDate: '2018',
+    temperament: 'Passive',
+    diet: 'Herbivore',
+    size: 'Large',
+    biome: 'Tropical',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Giant Bee',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Herbivore',
+    size: 'Small',
+    biome: 'Forest',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Giganotosaurus',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Extra Large',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Gigantopithecus',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Territorial',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Glowbug',
+    dlc: 'Aberration',
+    releaseDate: '2017',
+    temperament: 'Docile',
+    diet: 'None',
+    size: 'Small',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Glowtail',
+    dlc: 'Aberration',
+    releaseDate: '2017',
+    temperament: 'Passive',
+    diet: 'Herbivore',
+    size: 'Small',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Griffin',
+    dlc: 'Ragnarok',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Mountain',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Hesperornis',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Territorial',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Hyaenodon',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Ice Titan',
+    dlc: 'Extinction',
+    releaseDate: '2018',
+    temperament: 'Aggressive',
+    diet: 'None',
+    size: 'Titan',
+    biome: 'Snowy Mountains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Ichthyornis',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Ocean',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Ichthyosaurus',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Docile',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Iguanodon',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Insect Swarm',
+    dlc: 'Genesis: Part 1',
+    releaseDate: '2020',
+    temperament: 'Aggressive',
+    diet: 'None',
+    size: 'Small',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Jerboa',
+    dlc: 'Scorched Earth',
+    releaseDate: '2016',
+    temperament: 'Cowardly',
+    diet: 'Herbivore',
+    size: 'Small',
+    biome: 'Desert',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Jug Bug',
+    dlc: 'Scorched Earth',
+    releaseDate: '2016',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Small',
+    biome: 'Desert',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Kairuku',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Docile',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Kaprosuchus',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Swamp',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Karkinos',
+    dlc: 'Aberration',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Kentrosaurus',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'King Titan',
+    dlc: 'Extinction',
+    releaseDate: '2018',
+    temperament: 'Aggressive',
+    diet: 'None',
+    size: 'Titan',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Lamprey',
+    dlc: 'Aberration',
+    releaseDate: '2017',
+    temperament: 'Passive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Leech',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Swamp',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Leedsichthys',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Docile',
+    diet: 'Carnivore',
+    size: 'Extra Large',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Liopleurodon',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Elusive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Lymantria',
+    dlc: 'Scorched Earth',
+    releaseDate: '2016',
+    temperament: 'Evasive',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Desert',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Lystrosaurus',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Passive',
+    diet: 'Herbivore',
+    size: 'Small',
+    biome: 'Swamp',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Maewing',
+    dlc: 'Genesis: Part 2',
+    releaseDate: '2021',
+    temperament: 'Docile',
+    diet: 'Omnivore',
+    size: 'Medium',
+    biome: 'Tropical',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Magmasaur',
+    dlc: 'Genesis: Part 1',
+    releaseDate: '2020',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Volcanic',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Mammoth',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Large',
+    biome: 'Snowy Mountains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Managarmr',
+    dlc: 'Extinction',
+    releaseDate: '2018',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Tropical',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Manta',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Manticore',
+    dlc: 'Scorched Earth',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Boss',
+    biome: 'Scorched Earth',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Mantis',
+    dlc: 'Scorched Earth',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Desert',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Megachelon',
+    dlc: 'Genesis: Part 1',
+    releaseDate: '2020',
+    temperament: 'Passive',
+    diet: 'Herbivore',
+    size: 'Extra Large',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Megalania',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Megaloceros',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Skittish',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Tundra',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Megalodon',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Megalosaurus',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Meganeura',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Swamp',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Megatherium',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Docile',
+    diet: 'Omnivore',
+    size: 'Large',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Mek',
+    dlc: 'Extinction',
+    releaseDate: '2018',
+    temperament: 'Docile',
+    diet: 'None',
+    size: 'Large',
+    biome: 'Technology',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Mesopithecus',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Passive',
+    diet: 'Omnivore',
+    size: 'Small',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Microraptor',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Forest',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Moeder',
+    dlc: 'Genesis: Part 1',
+    releaseDate: '2020',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Boss',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Morellatops',
+    dlc: 'Scorched Earth',
+    releaseDate: '2016',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Desert',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Mosasaurus',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Extra Large',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Moschops',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Cowardly',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Nameless',
+    dlc: 'Aberration',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Noglin',
+    dlc: 'Genesis: Part 2',
+    releaseDate: '2021',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Tropical',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Onyc',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Otter',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Passive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'River',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Oviraptor',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Skittish',
+    diet: 'Omnivore',
+    size: 'Small',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Ovis',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Stupid',
+    diet: 'Herbivore',
+    size: 'Small',
+    biome: 'Mountain',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Pachy',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Small',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Pachyrhinosaurus',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Evasive',
+    diet: 'Herbivore',
+    size: 'Large',
+    biome: 'Tundra',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Paraceratherium',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Extra Large',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Parakeet Fish School',
+    dlc: 'Genesis: Part 1',
+    releaseDate: '2020',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Parasaur',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Skittish',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Pegomastax',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Herbivore',
+    size: 'Small',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Pelagornis',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Skittish',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Phiomia',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Skittish',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Swamp',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Phoenix',
+    dlc: 'Scorched Earth',
+    releaseDate: '2017',
+    temperament: 'Elusive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Desert',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Piranha',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'River',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Plesiosaur',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Docile',
+    diet: 'Carnivore',
+    size: 'Extra Large',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Procoptodon',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Pteranodon',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Skittish',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Ocean',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Pulmonoscorpius',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Purlovia',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Quetzal',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Docile',
+    diet: 'Carnivore',
+    size: 'Extra Large',
+    biome: 'Mountain',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Raptor',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Ravager',
+    dlc: 'Aberration',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Reaper',
+    dlc: 'Aberration',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Extra Large',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Rex',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Extra Large',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Rock Drake',
+    dlc: 'Aberration',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Cave',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Rock Elemental',
+    dlc: 'Scorched Earth',
+    releaseDate: '2016',
+    temperament: 'Territorial',
+    diet: 'Mineralivore',
+    size: 'Extra Large',
+    biome: 'Desert',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Roll Rat',
+    dlc: 'Aberration',
+    releaseDate: '2017',
+    temperament: 'Territorial',
+    diet: 'Herbivore',
+    size: 'Large',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Sabertooth Salmon',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'River',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Sabertooth',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Snowy Mountains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Sarco',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Swamp',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Scout',
+    dlc: 'Extinction',
+    releaseDate: '2018',
+    temperament: 'Docile',
+    diet: 'None',
+    size: 'Small',
+    biome: 'Technology',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Seeker',
+    dlc: 'Aberration',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Shadowmane',
+    dlc: 'Genesis: Part 2',
+    releaseDate: '2021',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Tropical',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Shinehorn',
+    dlc: 'Aberration',
+    releaseDate: '2017',
+    temperament: 'Passive',
+    diet: 'Herbivore',
+    size: 'Small',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Sinomacrops',
+    dlc: 'Lost Island',
+    releaseDate: '2021',
+    temperament: 'Skittish',
+    diet: 'Herbivore',
+    size: 'Small',
+    biome: 'Tropical',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Snow Owl',
+    dlc: 'Extinction',
+    releaseDate: '2018',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Snowy Mountains',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Spinosaurus',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Extra Large',
+    biome: 'Swamp',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Stegosaurus',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Large',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Summoner',
+    dlc: 'Genesis: Part 2',
+    releaseDate: '2021',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Tropical',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Tapejara',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Skittish',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Tropical',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Tek Stryder',
+    dlc: 'Genesis: Part 2',
+    releaseDate: '2021',
+    temperament: 'Docile',
+    diet: 'None',
+    size: 'Extra Large',
+    biome: 'Technology',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Terror Bird',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Desert',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Therizinosaurus',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Territorial',
+    diet: 'Herbivore',
+    size: 'Large',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Thorny Dragon',
+    dlc: 'Scorched Earth',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Desert',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Thylacoleo',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Titanoboa',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Cave',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Titanomyrma',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Titanosaur',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Titan',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Triceratops',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Defensive',
+    diet: 'Herbivore',
+    size: 'Large',
+    biome: 'Plains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Trilobite',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Evasive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Troodon',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Forest',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Tropeognathus',
+    dlc: 'Crystal Isles',
+    releaseDate: '2020',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Tropical',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Tusoteuthis',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Extra Large',
+    biome: 'Ocean',
+    traversal: 'Swimmer'
+  },
+  {
+    name: 'Unicorn',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Skittish',
+    diet: 'Herbivore',
+    size: 'Medium',
+    biome: 'Tropical',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Velonasaur',
+    dlc: 'Extinction',
+    releaseDate: '2018',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Medium',
+    biome: 'Tropical',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Voidwyrm',
+    dlc: 'Genesis: Part 2',
+    releaseDate: '2021',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Tropical',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Vulture',
+    dlc: 'Scorched Earth',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Small',
+    biome: 'Desert',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Woolly Rhino',
+    dlc: 'Base Game',
+    releaseDate: '2015',
+    temperament: 'Docile',
+    diet: 'Herbivore',
+    size: 'Large',
+    biome: 'Snowy Mountains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Wyvern',
+    dlc: 'Scorched Earth',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Extra Large',
+    biome: 'Tropical',
+    traversal: 'Flyer'
+  },
+  {
+    name: 'Yeti',
+    dlc: 'Base Game',
+    releaseDate: '2016',
+    temperament: 'Aggressive',
+    diet: 'Herbivore',
+    size: 'Extra Large',
+    biome: 'Snowy Mountains',
+    traversal: 'Ground'
+  },
+  {
+    name: 'Yutyrannus',
+    dlc: 'Base Game',
+    releaseDate: '2017',
+    temperament: 'Aggressive',
+    diet: 'Carnivore',
+    size: 'Large',
+    biome: 'Plains',
+    traversal: 'Ground'
+  }
+];
+
+export default dinoData;

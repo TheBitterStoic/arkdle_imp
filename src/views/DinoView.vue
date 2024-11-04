@@ -26,8 +26,8 @@
         <!-- Dropdown List for Filtered Dinosaurs -->
         <ul v-if="!isCorrectGuess && searchTerm && filteredDinosaurs.length" class="dropdown">
           <li v-for="dino in filteredDinosaurs" :key="dino" @click="checkDinoGuess(dino)">
-            <img :src="getDinoImage(dino)" :alt="dino" class="dino-image" />
             {{ dino }}
+            <img :src="getDinoImage(dino)" :alt="dino" class="dino-image" />
           </li>
         </ul>
         <p v-if="searchTerm && !filteredDinosaurs.length" class="no-match">No matches found</p>
@@ -35,38 +35,45 @@
 
       <!-- Table Section to Show Guess vs. Correct Dino -->
       <div class="table-container">
-        <table v-if="guesses.length" class="dino-table">
-          <thead>
-            <tr>
-              <th class="table-header">IMAGE</th>
-              <th class="table-header">NAME</th>
-              <th class="table-header">DLC'S</th>
-              <th class="table-header">RELEASE DATE</th>
-              <th class="table-header">TEMPERAMENT</th>
-              <th class="table-header">DIET</th>
-              <th class="table-header">SIZE</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="guess in guesses" :key="guess.name">
-              <td class="image-cell">
-                <img :src="getDinoImage(guess.name)" :alt="guess.name" class="table-image" />
-              </td>
-              <td :class="{'cell-correct': guess.name === correctDino, 'cell-incorrect': guess.name !== correctDino}">
-                {{ guess.name }}
-              </td>
-              <td :class="getCellClass(guess, 'dlc')">{{ guess.dlc }}</td>
-              <td :class="getCellClass(guess, 'releaseDate')">{{ guess.releaseDate }}</td>
-              <td :class="getCellClass(guess, 'temperament')">{{ guess.temperament }}</td>
-              <td :class="getCellClass(guess, 'diet')">{{ guess.diet }}</td>
-              <td :class="getCellClass(guess, 'size')">{{ guess.size }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-scroll"> <!-- Added this wrapper for scrolling -->
+          <table v-if="guesses.length" class="dino-table">
+            <thead>
+              <tr>
+                <th class="table-header">IMAGE</th>
+                <th class="table-header">NAME</th>
+                <th class="table-header">DLC'S</th>
+                <th class="table-header">RELEASE DATE</th>
+                <th class="table-header">TEMPERAMENT</th>
+                <th class="table-header">DIET</th>
+                <th class="table-header">SIZE</th>
+                <th class="table-header">BIOME</th>
+                <th class="table-header">TRAVERSAL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="guess in guesses" :key="guess.name">
+                <td class="image-cell">
+                  <img :src="getDinoImage(guess.name)" :alt="guess.name" class="table-image" />
+                </td>
+                <td :class="{'cell-correct': guess.name === correctDino, 'cell-incorrect': guess.name !== correctDino}">
+                  {{ guess.name }}
+                </td>
+                <td :class="getCellClass(guess, 'dlc')">{{ guess.dlc }}</td>
+                <td :class="getCellClass(guess, 'releaseDate')">{{ guess.releaseDate }}</td>
+                <td :class="getCellClass(guess, 'temperament')">{{ guess.temperament }}</td>
+                <td :class="getCellClass(guess, 'diet')">{{ guess.diet }}</td>
+                <td :class="getCellClass(guess, 'size')">{{ guess.size }}</td>
+                <td :class="getCellClass(guess, 'biome')">{{ guess.biome }}</td>
+                <td :class="getCellClass(guess, 'traversal')">{{ guess.traversal }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
 </template>
+
 
 <script>
 import dinoList from '@/data/dinoList';
@@ -98,7 +105,7 @@ export default {
       const start = new Date(now.getFullYear(), 0, 0);
       const diff = now - start;
       const oneDay = 1000 * 60 * 60 * 24;
-      const dayOfYear = Math.floor(diff / oneDay);
+      const dayOfYear = Math.floor(diff / oneDay) ;
 
       const index = dayOfYear % this.dinosaurs.length;
       return this.dinosaurs[index];
@@ -170,7 +177,7 @@ body, html {
 }
 
 .dino-page-container {
-  max-width: 750px;
+  max-width: 850px;
   margin: 0 auto;
   padding: 20px;
   background: radial-gradient(
@@ -181,21 +188,29 @@ body, html {
   );
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative; /* Required for absolute positioning of overlay */
 }
+
 .dino-page-container::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: inherit; /* Use the same background */
-  border-radius: inherit;
-  filter: contrast(2 00%) brightness(0.9) blur(1px); /* Adds a noise effect */
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  opacity: 0.1;
+  background-image: url('@/assets/overlay.jpg'); /* Correct image path */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2; /* Adjust opacity */
+  z-index: 1; /* Place behind other content */
+
 }
+
+.dino-page-container > * {
+  position: relative; /* Ensure content appears above overlay */
+  z-index: 2; /* Ensure it is above the overlay */
+}
+
 
 .dino-page {
   padding: 20px;
@@ -205,7 +220,6 @@ body, html {
   text-align: center;
   margin-bottom: 20px;
   padding: 15px;
-  background-color: #285c74;
   border-radius: 8px;
   max-width: 80%;
   margin: 0 auto;
@@ -214,7 +228,7 @@ body, html {
 .guess-dino-container h2 {
   margin: 0;
   font-size: 24px;
-  color: #ffffff;
+  color: #88e9ff;
   font-family: 'Posterama', sans-serif; /* Apply Posterama font only to the heading */
 }
 
@@ -240,13 +254,26 @@ body, html {
 }
 
 .correct-message {
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center-align content */
   padding: 10px;
   font-size: 16px;
-  background-color: #4caf50;
+  background: url('@/assets/ArkMenuThree.png');
+  background-position: center;
+  background-size: cover;
   color: white;
   text-align: center;
   border-radius: 4px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #B8860B; /* Dark gold border */
+}
+
+.victory-image {
+  width: auto;  /* Set your desired width */
+  height: 250px;  /* Maintain aspect ratio */
+  max-width: 100%; /* Make sure it doesn't overflow its container */
+  margin-top: 10px; /* Optional margin for spacing */
 }
 
 .dropdown {
@@ -258,7 +285,7 @@ body, html {
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: white;
+  background-color: #285c74;
   text-align: left;
   max-height: 200px;
   overflow-y: auto;
@@ -269,40 +296,47 @@ body, html {
   align-items: center;
   padding: 10px;
   cursor: pointer;
-  background-color: #f5f5f8; /* Light cyan background for each item */
-  color: #000000; /* Dark teal text color */
+  background-color: #285c74; /* Light cyan background for each item */
+  color: #88e9ff; /* Dark teal text color */
 }
 
 .dropdown li:hover {
-  background-color: #f0f0f0;
+  background-color: #3d88aa;
 }
 
 .dino-image {
-  width: 30px;
+  width: auto;
   height: 30px;
-  margin-right: 10px;
+  margin-left: 10px;
   border-radius: 50%;
 }
 
+.table-container {
+  display: flex; /* Use flexbox to center the table */
+  justify-content: center; /* Center horizontally */
+  margin-top: 20px; /* Optional margin for spacing */
+}
+.table-scroll {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  display: block; /* Allows for scrolling */
+}
+
 .dino-table {
-  width: 100%;
-  max-width: 700px;
-  margin-top: 20px;
-  border-collapse: collapse;
+  min-width: 800px; /* Set a minimum width for the table to force scrolling */
+  border-collapse: collapse; /* Collapse borders */
   text-align: center; /* Center the table content */
 }
 
 .dino-table th {
-  background-color: #ffffff;
-  color: #333;
-  padding: 8px;
+  color: #88e9ff;
+  padding: 0px;
   border: 1px solid #ddd;
 }
 
 .dino-table td, .image-cell {
   border: 1px solid #ddd;
   text-align: center;
-  padding: 8px;
+  padding: 2px;
 }
 
 .image-cell {
@@ -323,266 +357,34 @@ body, html {
   object-fit: contain; /* Ensures the image scales correctly */
   border-radius: 4px;
 }
-@media (max-width: 765px) {
-  /* Container adjustments for mobile */
+@media (max-width: 950px) {
   .dino-page-container {
-    padding: 10px;
-    box-shadow: none;
-    border-radius: 0;
+    max-width: 90%; /* Adjust the width to be smaller */
+    padding: 5px; /* Reduce padding for smaller screens */
   }
 
-  .dino-page {
-    padding: 10px;
+  .table-container {
+    max-width: 100%; /* Allow table to take full width of container */
+    overflow-x: auto; /* Ensure horizontal scrolling if needed */
   }
 
-  .guess-dino-container {
-    padding: 10px;
-    max-width: 100%;
-  }
-
-  .dropdown {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  /* Adjust input field */
-  .dino-input {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  /* Victory message adjustments */
-  .correct-message {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  /* Table adjustments for mobile */
   .dino-table {
-    font-size: 14px;
-    width: 100%;
-    max-width: 100%;
+    width: 100%; /* Full width for responsiveness */
+    max-width: 100%; /* No maximum width to allow shrinking */
+    font-size: 14px; /* Optional: reduce font size for smaller screens */
   }
 
-  .dino-table th, .dino-table td, .image-cell {
-    padding: 6px;
+  .dino-image {
+    height: 25px; /* Optionally reduce image size */
   }
 
-  .table-image {
-    width: 30px; /* Adjusted image width for smaller screens */
-    height: 30px;
-  }
-
-  /* Drop-down list items */
-  .dropdown li {
-    padding: 8px;
-    font-size: 14px;
-  }
-
-  /* Victory image size adjustment */
   .victory-image {
-    max-width: 100px;
-    max-height: 100px;
+    height: 200px; /* Optionally adjust victory image height */
   }
 }
-@media (max-width: 625px) {
-  /* Further container adjustments for smaller screens */
-  .dino-page-container {
-    padding: 5px;
-  }
-
-  .guess-dino-container {
-    padding: 8px;
-    max-width: 100%;
-  }
-
-  /* Input field and dropdown adjustments */
-  .dino-input {
-    font-size: 12px;
-    padding: 6px;
-  }
-
-  .dropdown li {
-    padding: 6px;
-    font-size: 12px;
-  }
-
-  /* Victory message adjustments */
-  .correct-message {
-    font-size: 12px;
-    padding: 6px;
-  }
-
-  /* Table adjustments for very small screens */
-  .dino-table {
-    font-size: 12px;
-    max-width: 100%;
-  }
-
-  .dino-table th, .dino-table td, .image-cell {
-    padding: 4px;
-  }
-
-  /* Adjust image sizes to fit better on small screens */
-  .table-image {
-    width: 25px; /* Smaller image width for very small screens */
-    height: 25px;
-  }
-
-  /* Victory image size adjustment */
+@media (max-width: 500px) {
   .victory-image {
-    max-width: 80px;
-    max-height: 80px;
-  }
-}
-@media (max-width: 521px) {
-  /* Further container adjustments for ultra-small screens */
-  .dino-page-container {
-    padding: 4px;
-  }
-
-  .guess-dino-container {
-    padding: 6px;
-    max-width: 100%;
-  }
-
-  /* Input field and dropdown adjustments */
-  .dino-input {
-    font-size: 10px;
-    padding: 5px;
-  }
-
-  .dropdown li {
-    padding: 5px;
-    font-size: 10px;
-  }
-
-  /* Victory message adjustments */
-  .correct-message {
-    font-size: 10px;
-    padding: 5px;
-  }
-
-  /* Table adjustments for ultra-small screens */
-  .dino-table {
-    font-size: 10px;
-    max-width: 100%;
-  }
-
-  .dino-table th, .dino-table td, .image-cell {
-    padding: 3px;
-  }
-
-  /* Adjust image sizes to fit better on ultra-small screens */
-  .table-image {
-    width: 20px; /* Smaller image width for ultra-small screens */
-    height: 20px;
-  }
-
-  /* Victory image size adjustment */
-  .victory-image {
-    max-width: 70px;
-    max-height: 70px;
-  }
-}
-@media (max-width: 433px) {
-  /* Further container adjustments for very compact screens */
-  .dino-page-container {
-    padding: 3px;
-  }
-
-  .guess-dino-container {
-    padding: 5px;
-    max-width: 100%;
-  }
-
-  /* Input field and dropdown adjustments */
-  .dino-input {
-    font-size: 9px;
-    padding: 4px;
-  }
-
-  .dropdown li {
-    padding: 4px;
-    font-size: 9px;
-  }
-
-  /* Victory message adjustments */
-  .correct-message {
-    font-size: 9px;
-    padding: 4px;
-  }
-
-  /* Table adjustments for very compact screens */
-  .dino-table {
-    font-size: 9px;
-    max-width: 100%;
-  }
-
-  .dino-table th, .dino-table td, .image-cell {
-    padding: 2px;
-  }
-
-  /* Adjust image sizes to fit better on very compact screens */
-  .table-image {
-    width: 18px; /* Smaller image width for very compact screens */
-    height: 18px;
-  }
-
-  /* Victory image size adjustment */
-  .victory-image {
-    max-width: 60px;
-    max-height: 60px;
-  }
-}
-@media (max-width: 395px) {
-  /* Container adjustments for ultra-compact screens */
-  .dino-page-container {
-    padding: 2px;
-  }
-
-  .guess-dino-container {
-    padding: 4px;
-    max-width: 100%;
-  }
-
-  /* Input field and dropdown adjustments */
-  .dino-input {
-    font-size: 8px;
-    padding: 3px;
-  }
-
-  .dropdown li {
-    padding: 3px;
-    font-size: 8px;
-  }
-
-  /* Victory message adjustments */
-  .correct-message {
-    font-size: 8px;
-    padding: 3px;
-  }
-
-  /* Table adjustments for ultra-compact screens */
-  .dino-table {
-    font-size: 8px;
-    max-width: 100%;
-  }
-
-  .dino-table th, .dino-table td, .image-cell {
-    padding: 1px;
-  }
-
-  /* Adjust image sizes to fit better on ultra-compact screens */
-  .table-image {
-    width: 16px; /* Smaller image width for ultra-compact screens */
-    height: 16px;
-  }
-
-  /* Victory image size adjustment */
-  .victory-image {
-    max-width: 50px;
-    max-height: 50px;
+    height: 120px; /* Adjust the height of the success image */
   }
 }
 </style>

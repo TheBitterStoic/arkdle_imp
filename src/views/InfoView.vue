@@ -86,4 +86,28 @@ p {
   font-size: 16px;
   line-height: 1.5;
 }
+@media (max-width: 600px) {
+  .info-page {
+    padding: 5px; /* Reduce padding */
+    max-width: 90%; /* Allow the container to take up more width */
+  }
+
+  h1 {
+    font-size: 20px; /* Decrease heading font size */
+  }
+
+  p {
+    font-size: 14px; /* Decrease paragraph font size */
+  }
+
+  #donate-button-container {
+    text-align: center; /* Center the donation button */
+    margin-top: 15px; /* Add some space above the button */
+  }
+
+  #donate-button {
+    width: 100%; /* Make the button full-width */
+    padding: 10px; /* Add padding for the button */
+  }
+}
 </style>

@@ -23,7 +23,7 @@
 
       <!-- Success message overlay with dinosaur image -->
       <div v-else class="correct-message">
-        🎉Congratulations! You've guessed today's sound: {{ correctDino }}!🎉
+        🎉 Congratulations! You've guessed today's sound: {{ correctDino }}! 🎉
         <img :src="getDinoImage(correctDino)" alt="Dinosaur" class="victory-image" />
       </div>
 
@@ -112,6 +112,12 @@ export default {
       }
     },
     checkDinoGuess(dino) {
+      // Prevent further guesses after reaching a limit of incorrect guesses
+      if (this.incorrectGuesses >= 10) {
+        alert("You've reached the maximum number of incorrect guesses.");
+        return;
+      }
+
       this.isCorrectGuess = dino === this.correctDino;
 
       if (!this.guesses.includes(dino)) {
@@ -119,10 +125,11 @@ export default {
         
         if (!this.isCorrectGuess) {
           this.incorrectGuesses += 1;
-          this.updateHint();
+          this.updateHint(); // Update the hint if the guess is incorrect
         }
       }
       
+      // Clear the search term and save the state
       this.searchTerm = '';
       this.saveState(); // Save state after checking guess
     },
@@ -197,17 +204,37 @@ export default {
 
 <style scoped>
 .sound-page-container {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 500px; /* Set the maximum width */
+  margin: 0 auto; /* Center the container */
+  padding: 20px; /* Add padding */
   background: radial-gradient(
     circle, 
     #285c74 60%, 
     #1e4c5d 90%, 
     #12333d 100%
-  );
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  ); /* Background gradient */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  position: relative; /* Required for absolute positioning of overlay */
+}
+
+.sound-page-container::before {
+  content: ''; /* Empty content for the overlay */
+  position: absolute; /* Position it absolutely */
+  top: 0; /* Align to top */
+  left: 0; /* Align to left */
+  right: 0; /* Align to right */
+  bottom: 0; /* Align to bottom */
+  background-image: url('@/assets/overlay.jpg'); /* Overlay image path */
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the overlay image */
+  opacity: 0.2; /* Set the opacity for the overlay */
+  z-index: 1; /* Place behind other content */
+}
+
+.sound-page-container > * {
+  position: relative; /* Ensure content appears above overlay */
+  z-index: 2; /* Ensure it is above the overlay */
 }
 
 .sound-page h2 {
@@ -274,13 +301,19 @@ export default {
 }
 
 .correct-message {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center-align content */
   padding: 10px;
   font-size: 16px;
-  background-color: #4caf50;
+  background: url('@/assets/ArkMenuThree.png'); /* Background image */
+  background-position: center; /* Center the background image */
+  background-size: cover; /* Ensure the background covers the entire container */
   color: white;
   text-align: center;
   border-radius: 4px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #B8860B; /* Dark gold border */
 }
 
 .table-container {
@@ -319,5 +352,58 @@ export default {
   width: 200px; /* Adjust this for your preferred size */
   height: 200px; /* Adjust this for your preferred size */
   margin-top: 10px; /* Space above the image */
+}
+
+@media (max-width: 630px) {
+  .sound-page-container {
+    max-width: 80%; /* Allow the container to take up more width */
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+
+  .sound-page h2 {
+    font-size: 20px; /* Decrease the font size for the heading */
+  }
+
+  .sound-input {
+    max-width: 80%; /* Allow the input to take the full width */
+    font-size: 14px; /* Decrease the font size */
+  }
+
+  .play-button {
+    font-size: 16px; /* Decrease the button font size */
+    padding: 8px; /* Reduce padding */
+  }
+
+  .begin-text, .hint-text {
+    font-size: 16px; /* Decrease font size for hints and prompts */
+  }
+
+  .hint-text {
+    font-size: 18px; /* Maintain a slightly larger size for the hint text */
+  }
+
+  .dropdown {
+    max-width: 80%; /* Ensure dropdown takes full width */
+  }
+
+  .correct-message {
+    padding: 8px; /* Reduce padding */
+    font-size: 14px; /* Decrease font size */
+  }
+
+  .victory-image {
+    width: 150px; /* Adjust image size for smaller screens */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .sound-table {
+    max-width: 80%; /* Allow the table to take full width */
+    font-size: 14px; /* Decrease font size for table content */
+  }
+
+  .sound-table th,
+  .sound-table td {
+    padding: 6px; /* Reduce padding in table cells */
+  }
 }
 </style>
