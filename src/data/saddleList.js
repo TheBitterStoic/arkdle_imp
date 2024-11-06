@@ -32,7 +32,6 @@ export default [
   'Gallimimus_Saddle.png.jpg',
   'Gasbags_Saddle.png.jpg',
   'Giganotosaurus_Saddle.png.jpg',
-  'Gigantoraptor_Saddle.png.jpg',
   'Ichthyosaurus_Saddle.png.jpg',
   'Iguanodon_Saddle.png.jpg',
   'Kaprosuchus_Saddle.png.jpg',
