@@ -11,7 +11,7 @@
       I am a solo developer currently in University, so if you have any suggestions/criticism, email: arkdlefeedback@gmail.com.
     </p>
     <p>
-    If you’d like to help me keep improving and making new content, please consider supporting me. Your contributions go directly towards development costs, server maintenance, and helping us bring even more fun features to life.
+    If you’d like to help me keep improving and making new content, please consider supporting me. Your contributions go directly towards development costs, server maintenance, and helping me bring even more fun features to life.
     </p>
     <div id="donate-button-container">
       <div id="donate-button"></div>
