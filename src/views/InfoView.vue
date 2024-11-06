@@ -8,10 +8,10 @@
       All 3 minigames reset daily, so be sure to come back every day to try again!
     </p>
     <p>
-      I am a solo developer currently in University, so if you have any suggestions, email: arkdlefeedback@gmail.com.
+      I am a solo developer currently in University, so if you have any suggestions/criticism, email: arkdlefeedback@gmail.com.
     </p>
     <p>
-      If you want to support me with a small donation, click below :)
+    If you’d like to help me keep improving and making new content, please consider supporting me. Your contributions go directly towards development costs, server maintenance, and helping us bring even more fun features to life.
     </p>
     <div id="donate-button-container">
       <div id="donate-button"></div>

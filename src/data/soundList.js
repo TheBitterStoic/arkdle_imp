@@ -53,7 +53,6 @@ export default [
   'Megalaniasound.mp3',
   'Megalosaurussound.mp3',
   'Megatheriumsound.mp3',
-  'Microraptorsound.mp3',
   'Namelesssound.mp3',
   'Ottersound.mp3',
   'Pachysound.mp3',

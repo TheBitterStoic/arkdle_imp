@@ -73,9 +73,10 @@ export default {
 }
 
 .button-text {
-  font-size: 40px; /* Font size for button text */
+  font-size: 30px; /* Font size for button text */
   color: #88e9ff; /* Text color */
   font-weight: bold; /* Make text bold */
+  font-family: 'Posterama';
 }
 @media (max-width: 447px) {
   .rect-button {
