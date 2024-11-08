@@ -847,7 +847,7 @@ const dinoData = [
     diet: 'Herbivore',
     size: 'Medium',
     biome: 'Desert',
-    traversal: 'Ground'
+    traversal: 'Flyer'
   },
   {
     name: 'Lystrosaurus',
@@ -1434,7 +1434,7 @@ const dinoData = [
     dlc: 'Lost Island',
     releaseDate: '2021',
     temperament: 'Skittish',
-    diet: 'Herbivore',
+    diet: 'Insectivore',
     size: 'Small',
     biome: 'Tropical',
     traversal: 'Flyer'
