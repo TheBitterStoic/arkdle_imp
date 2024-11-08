@@ -9,6 +9,11 @@
           <img :src="dailySaddleImage" alt="Saddle of the Day" class="saddle-image" />
         </div>
 
+        <!-- Underscore hint for the correct answer -->
+        <div class="hint-container">
+          <p class="hint-text">{{ revealedHint }}</p>
+        </div>
+
         <!-- Input and Prompt -->
         <div v-if="!isCorrectGuess" class="input-message-container">
           <p class="begin-text">Type any Dino to begin</p>
@@ -23,7 +28,7 @@
 
         <!-- Success Message -->
         <div v-else class="correct-message">
-          🎉 Congratulations! You've guessed today's saddle: {{ correctDino }}! 🎉
+          🎉 Congratulations! You've guessed today's saddle: {{ correctDino }} in {{ guesses.length }} guesses! 🎉
         </div>
 
         <!-- Dropdown for Filtered Dinosaurs -->
@@ -70,7 +75,10 @@ export default {
       correctDino: null,
       isCorrectGuess: false,
       guesses: [],
-      dailyDateKey: this.getDateKey(), // Generate the date key on initialization
+      incorrectGuesses: 0,
+      revealedHint: '',
+      revealedIndices: new Set(),
+      dailyDateKey: this.getDateKey(),
     };
   },
   computed: {
@@ -104,6 +112,13 @@ export default {
 
       if (!this.guesses.includes(dino)) {
         this.guesses.unshift(dino);
+        this.incorrectGuesses++;
+
+        // Update the hint when incorrect guesses reach 5 or more
+        if (this.incorrectGuesses >= 5) {
+          this.updateHint();
+        }
+
         this.saveState(); // Save the state whenever a guess is made
       }
 
@@ -129,6 +144,8 @@ export default {
       const state = {
         isCorrectGuess: this.isCorrectGuess,
         guesses: this.guesses,
+        incorrectGuesses: this.incorrectGuesses,
+        revealedHint: this.revealedHint,
       };
       localStorage.setItem(`saddleGuessState-${this.dailyDateKey}`, JSON.stringify(state));
     },
@@ -137,6 +154,8 @@ export default {
       if (savedState) {
         this.isCorrectGuess = savedState.isCorrectGuess || false;
         this.guesses = savedState.guesses || [];
+        this.incorrectGuesses = savedState.incorrectGuesses || 0;
+        this.revealedHint = savedState.revealedHint || '_'.repeat(this.correctDino.length);
       } else {
         this.resetGame(); // If no state for today, reset the game
       }
@@ -144,11 +163,29 @@ export default {
     resetGame() {
       this.isCorrectGuess = false;
       this.guesses = [];
+      this.incorrectGuesses = 0;
+      this.revealedHint = '_'.repeat(this.correctDino.length); // Initialize hint with underscores
       this.saveState(); // Save the reset state for the new day
+    },
+    updateHint() {
+      const revealLetters = Math.floor(this.incorrectGuesses / 2);
+      let hintArray = this.revealedHint.split('');
+
+      while (this.revealedIndices.size < revealLetters && this.revealedIndices.size < this.correctDino.length) {
+        const randomIndex = Math.floor(Math.random() * this.correctDino.length);
+
+        if (!this.revealedIndices.has(randomIndex)) {
+          this.revealedIndices.add(randomIndex);
+          hintArray[randomIndex] = this.correctDino[randomIndex];
+        }
+      }
+
+      this.revealedHint = hintArray.join('');
     },
   },
   mounted() {
     this.correctDino = this.getDailyDino();
+    this.revealedHint = '_'.repeat(this.correctDino.length); // Initialize hint with underscores
     if (localStorage.getItem(`saddleGuessState-${this.dailyDateKey}`)) {
       this.loadState();
     } else {
@@ -193,7 +230,6 @@ export default {
   z-index: 2; /* Ensure it is above the overlay */
 }
 
-
 .saddle-page h2 {
   font-size: 24px;
   color: #88e9ff;
@@ -221,6 +257,16 @@ export default {
   border-radius: 8px;
 }
 
+.hint-container {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.hint-text {
+  font-size: 20px;
+  color: #ffffff;
+}
+
 .begin-text {
   color: #ffffff;
 }
@@ -242,8 +288,8 @@ export default {
   padding: 10px;
   cursor: pointer;
   text-align: center;
-  background-color: #f5f5f8;
-  color: #000000;
+  background-color: #f5f5f8; /* Light cyan background for each item */
+  color: #000000; /* Dark teal text color */
 }
 
 .no-match {
@@ -291,6 +337,7 @@ export default {
 .row-incorrect {
   background-color: #b6202f;
 }
+
 @media (max-width: 600px) {
   .saddle-page-container {
     max-width: 80%; /* Allow the container to take up more space */
@@ -320,5 +367,4 @@ export default {
     padding: 8px; /* Reduce padding in the success message */
   }
 }
-
 </style>

@@ -8,10 +8,14 @@
         <button @click="playSound" class="play-button">🔊 Play Sound</button>
       </div>
 
+      <!-- Underscore hint for the correct answer -->
+      <div class="hint-container">
+        <p class="hint-text">{{ revealedHint }}</p>
+      </div>
+
       <!-- Input and prompt if the guess is incorrect -->
       <div v-if="!isCorrectGuess" class="input-message-container">
         <p class="begin-text">Type any Dino to begin</p>
-        <p class="hint-text" v-if="incorrectGuesses >= 5">{{ revealedHint }}</p>
         <input
           type="text"
           v-model="searchTerm"
@@ -23,7 +27,7 @@
 
       <!-- Success message overlay with dinosaur image -->
       <div v-else class="correct-message">
-        🎉 Congratulations! You've guessed today's sound: {{ correctDino }}! 🎉
+        🎉 Congratulations! You've guessed today's sound: {{ correctDino }} in {{ guesses.length }} guesses! 🎉
         <img :src="getDinoImage(correctDino)" alt="Dinosaur" class="victory-image" />
       </div>
 
@@ -86,9 +90,6 @@ export default {
           dino.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
           !this.guesses.includes(dino)
         );
-    },
-    formattedHint() {
-      return this.revealedHint.split('').join(' '); // Format the hint for display
     }
   },
   methods: {
@@ -112,22 +113,18 @@ export default {
       }
     },
     checkDinoGuess(dino) {
-      if (this.incorrectGuesses >= 100) {
-        alert("You've reached the maximum number of incorrect guesses.");
-        return;
-      }
-
       this.isCorrectGuess = dino === this.correctDino;
 
       if (!this.guesses.includes(dino)) {
         this.guesses.unshift(dino);
-        
-        if (!this.isCorrectGuess) {
-          this.incorrectGuesses += 1;
+        this.incorrectGuesses += 1;
+
+        // Update the hint when incorrect guesses reach 5 or more
+        if (this.incorrectGuesses >= 5) {
           this.updateHint();
         }
       }
-      
+
       this.searchTerm = '';
       this.saveState();
     },
@@ -186,7 +183,7 @@ export default {
   },
   mounted() {
     this.correctDino = this.getDailyDino();
-    this.revealedHint = '_'.repeat(this.correctDino.length);
+    this.revealedHint = '_'.repeat(this.correctDino.length); // Initialize hint with underscores
     this.sound = new Audio(require(`@/assets/sound_files/${this.correctDino}sound.mp3`));
 
     if (localStorage.getItem(`soundGuessState-${this.dailyDateKey}`)) {
@@ -345,7 +342,7 @@ export default {
 }
 
 .victory-image {
-  width: 200px; /* Adjust this for your preferred size */
+  width: auto; /* Adjust this for your preferred size */
   height: 200px; /* Adjust this for your preferred size */
   margin-top: 10px; /* Space above the image */
 }

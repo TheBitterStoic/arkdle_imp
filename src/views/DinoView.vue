@@ -19,7 +19,7 @@
 
         <!-- Success message overlay when the correct dino is guessed -->
         <div v-else class="correct-message">
-          🎉 Congratulations! You've guessed today's dino: {{ correctDino }}! 🎉
+          🎉 Congratulations! You've guessed today's dino: {{ correctDino }} in {{ guesses.length }} guesses! 🎉
           <img :src="getDinoImage(correctDino)" alt="Dinosaur" class="victory-image" />
         </div>
 
