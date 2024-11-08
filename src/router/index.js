@@ -4,6 +4,7 @@ import DinoView from '../views/DinoView.vue'
 import SaddleView from '../views/SaddleView.vue'
 import SoundView from '../views/SoundView.vue'
 import InfoView from '@/views/InfoView.vue'; 
+import PrivacyPolicy from '@/views/PrivacyPolicy.vue'; // Import the new component
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/info',
     name: 'Info',
     component: InfoView
+  },
+  {
+    path: '/privacy', // New route for Privacy Policy
+    name: 'PrivacyPolicy',
+    component: PrivacyPolicy
   }
 ]
 

@@ -26,6 +26,11 @@
 
     <!-- Page Content -->
     <router-view/>
+
+    <!-- Privacy Policy Section -->
+    <footer class="privacy-policy">
+      <router-link to="/privacy" class="privacy-link">Privacy Policy</router-link>
+    </footer>
   </div>
 </template>
 
@@ -107,6 +112,11 @@ nav a.router-link-exact-active .nav-icon {
     font-weight: normal;
     font-style: normal;
 }
+
+.privacy-link {
+  color: #ffffff; /* Set link color to white */
+  text-decoration: underline; /* Underline for emphasis */
+}
 @media (max-width: 375px) {
   .logo {
     width: 150px; /* Reduce logo size for smaller screens */
@@ -127,4 +137,5 @@ nav a.router-link-exact-active .nav-icon {
     border-color: #CFB53B; /* Keep border color change for active link */
   }
 }
+
 </style>
