@@ -350,18 +350,20 @@ body, html {
   border: 1px solid #ddd;
   text-align: center;
   padding: 2px;
+  font-weight: bold; /* Makes the text in table cells bold */
 }
+
 
 .image-cell {
   background-color: #ffffff;
 }
 
 .cell-correct {
-  background-color: #1a8b1e;
+  background-color: #10e444;
 }
 
 .cell-incorrect {
-  background-color: #b6202f;
+  background-color: #e40d08;
 }
 
 .table-image {
@@ -370,6 +372,7 @@ body, html {
   object-fit: contain; /* Ensures the image scales correctly */
   border-radius: 4px;
 }
+
 @media (max-width: 950px) {
   .dino-page-container {
     max-width: 90%; /* Adjust the width to be smaller */
