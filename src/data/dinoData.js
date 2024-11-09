@@ -597,7 +597,7 @@ const dinoData = [
     diet: 'Herbivore',
     size: 'Medium',
     biome: 'Wasteland',
-    traversal: 'Swimmer'
+    traversal: 'Ground'
   },
   {
     name: 'Giant Bee',
