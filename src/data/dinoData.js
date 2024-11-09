@@ -15,7 +15,7 @@ const dinoData = [
     releaseDate: '2016',
     temperament: 'Aggressive',
     diet: 'Carnivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Plains',
     traversal: 'Ground'
   },
@@ -45,7 +45,7 @@ const dinoData = [
     releaseDate: '2022',
     temperament: 'Neutral',
     diet: 'Omnivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Mountains',
     traversal: 'Ground'
   },
@@ -95,7 +95,7 @@ const dinoData = [
     releaseDate: '2015',
     temperament: 'Aggressive',
     diet: 'Carnivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Mountain',
     traversal: 'Flyer'
   },
@@ -165,7 +165,7 @@ const dinoData = [
     releaseDate: '2017',
     temperament: 'Docile',
     diet: 'Carnivore',
-    size: 'Extra Large',
+    size: 'Large',
     biome: 'Ocean',
     traversal: 'Swimmer'
   },
@@ -185,7 +185,7 @@ const dinoData = [
     releaseDate: '2020',
     temperament: 'Aggressive',
     diet: 'Carnivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Forest',
     traversal: 'Ground'
   },
@@ -235,7 +235,7 @@ const dinoData = [
     releaseDate: '2015',
     temperament: 'Aggressive',
     diet: 'Carnivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Plains',
     traversal: 'Ground'
   },
@@ -255,7 +255,7 @@ const dinoData = [
     releaseDate: '2016',
     temperament: 'Territorial',
     diet: 'Herbivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Forest',
     traversal: 'Ground'
   },
@@ -265,7 +265,7 @@ const dinoData = [
     releaseDate: '2016',
     temperament: 'Aggressive',
     diet: 'Carnivore',
-    size: 'Small',
+    size: 'Medium',
     biome: 'Ocean',
     traversal: 'Swimmer'
   },
@@ -295,7 +295,7 @@ const dinoData = [
     releaseDate: '2020',
     temperament: 'Aggressive',
     diet: 'Carnivore',
-    size: 'Extra Large',
+    size: 'Large',
     biome: 'Tropical',
     traversal: 'Flyer'
   },
@@ -375,7 +375,7 @@ const dinoData = [
     releaseDate: '2016',
     temperament: 'Docile',
     diet: 'Carnivore',
-    size: 'Medium',
+    size: 'Small',
     biome: 'Swamp',
     traversal: 'Ground'
   },
@@ -395,7 +395,7 @@ const dinoData = [
     releaseDate: '2021',
     temperament: 'Aggressive',
     diet: 'Omnivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Jungle',
     traversal: 'Ground'
   },
@@ -425,7 +425,7 @@ const dinoData = [
     releaseDate: '2016',
     temperament: 'Territorial',
     diet: 'Omnivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Forest',
     traversal: 'Ground'
   },
@@ -485,7 +485,7 @@ const dinoData = [
     releaseDate: '2017',
     temperament: 'Aggressive',
     diet: 'Carnivore',
-    size: 'Small',
+    size: 'Medium',
     biome: 'Ocean',
     traversal: 'Swimmer'
   },
@@ -575,7 +575,7 @@ const dinoData = [
     releaseDate: '2018',
     temperament: 'Passive',
     diet: 'Omnivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Forest',
     traversal: 'Ground'
   },
@@ -595,7 +595,7 @@ const dinoData = [
     releaseDate: '2018',
     temperament: 'Passive',
     diet: 'Herbivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Wasteland',
     traversal: 'Swimmer'
   },
@@ -655,7 +655,7 @@ const dinoData = [
     releaseDate: '2017',
     temperament: 'Aggressive',
     diet: 'Carnivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Mountain',
     traversal: 'Flyer'
   },
@@ -910,16 +910,6 @@ const dinoData = [
     traversal: 'Swimmer'
   },
   {
-    name: 'Manticore',
-    dlc: 'Scorched Earth',
-    releaseDate: '2016',
-    temperament: 'Aggressive',
-    diet: 'Carnivore',
-    size: 'Boss',
-    biome: 'Scorched Earth',
-    traversal: 'Flyer'
-  },
-  {
     name: 'Mantis',
     dlc: 'Scorched Earth',
     releaseDate: '2016',
@@ -995,7 +985,7 @@ const dinoData = [
     releaseDate: '2017',
     temperament: 'Docile',
     diet: 'Omnivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Forest',
     traversal: 'Ground'
   },
@@ -1005,7 +995,7 @@ const dinoData = [
     releaseDate: '2018',
     temperament: 'Docile',
     diet: 'None',
-    size: 'Large',
+    size: 'Extra Large',
     biome: 'Technology',
     traversal: 'Ground'
   },
@@ -1028,16 +1018,6 @@ const dinoData = [
     size: 'Small',
     biome: 'Forest',
     traversal: 'Flyer'
-  },
-  {
-    name: 'Moeder',
-    dlc: 'Genesis: Part 1',
-    releaseDate: '2020',
-    temperament: 'Aggressive',
-    diet: 'Carnivore',
-    size: 'Boss',
-    biome: 'Ocean',
-    traversal: 'Swimmer'
   },
   {
     name: 'Morellatops',
@@ -1155,7 +1135,7 @@ const dinoData = [
     releaseDate: '2015',
     temperament: 'Docile',
     diet: 'Herbivore',
-    size: 'Extra Large',
+    size: 'Large',
     biome: 'Plains',
     traversal: 'Ground'
   },
@@ -1235,7 +1215,7 @@ const dinoData = [
     releaseDate: '2015',
     temperament: 'Docile',
     diet: 'Carnivore',
-    size: 'Extra Large',
+    size: 'Large',
     biome: 'Ocean',
     traversal: 'Swimmer'
   },
@@ -1285,7 +1265,7 @@ const dinoData = [
     releaseDate: '2015',
     temperament: 'Docile',
     diet: 'Carnivore',
-    size: 'Extra Large',
+    size: 'Large',
     biome: 'Mountain',
     traversal: 'Flyer'
   },
@@ -1315,7 +1295,7 @@ const dinoData = [
     releaseDate: '2017',
     temperament: 'Aggressive',
     diet: 'Carnivore',
-    size: 'Extra Large',
+    size: 'Large',
     biome: 'Cave',
     traversal: 'Ground'
   },
@@ -1325,7 +1305,7 @@ const dinoData = [
     releaseDate: '2015',
     temperament: 'Aggressive',
     diet: 'Carnivore',
-    size: 'Extra Large',
+    size: 'Large',
     biome: 'Plains',
     traversal: 'Ground'
   },
@@ -1355,7 +1335,7 @@ const dinoData = [
     releaseDate: '2017',
     temperament: 'Territorial',
     diet: 'Herbivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Cave',
     traversal: 'Ground'
   },
@@ -1415,7 +1395,7 @@ const dinoData = [
     releaseDate: '2021',
     temperament: 'Aggressive',
     diet: 'Carnivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Tropical',
     traversal: 'Ground'
   },
@@ -1445,7 +1425,7 @@ const dinoData = [
     releaseDate: '2018',
     temperament: 'Aggressive',
     diet: 'Carnivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Snowy Mountains',
     traversal: 'Flyer'
   },
@@ -1455,7 +1435,7 @@ const dinoData = [
     releaseDate: '2015',
     temperament: 'Aggressive',
     diet: 'Carnivore',
-    size: 'Extra Large',
+    size: 'Large',
     biome: 'Swamp',
     traversal: 'Swimmer'
   },
@@ -1465,7 +1445,7 @@ const dinoData = [
     releaseDate: '2015',
     temperament: 'Docile',
     diet: 'Herbivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Forest',
     traversal: 'Ground'
   },
@@ -1515,7 +1495,7 @@ const dinoData = [
     releaseDate: '2016',
     temperament: 'Territorial',
     diet: 'Herbivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Forest',
     traversal: 'Ground'
   },
@@ -1575,7 +1555,7 @@ const dinoData = [
     releaseDate: '2015',
     temperament: 'Defensive',
     diet: 'Herbivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Plains',
     traversal: 'Ground'
   },
@@ -1605,7 +1585,7 @@ const dinoData = [
     releaseDate: '2020',
     temperament: 'Aggressive',
     diet: 'Carnivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Tropical',
     traversal: 'Flyer'
   },
@@ -1665,7 +1645,7 @@ const dinoData = [
     releaseDate: '2015',
     temperament: 'Docile',
     diet: 'Herbivore',
-    size: 'Large',
+    size: 'Medium',
     biome: 'Snowy Mountains',
     traversal: 'Ground'
   },
@@ -1675,7 +1655,7 @@ const dinoData = [
     releaseDate: '2016',
     temperament: 'Aggressive',
     diet: 'Carnivore',
-    size: 'Extra Large',
+    size: 'Large',
     biome: 'Volcano',
     traversal: 'Flyer'
   },
@@ -1685,7 +1665,7 @@ const dinoData = [
     releaseDate: '2016',
     temperament: 'Aggressive',
     diet: 'Herbivore',
-    size: 'Extra Large',
+    size: 'Medium',
     biome: 'Snowy Mountains',
     traversal: 'Ground'
   },
