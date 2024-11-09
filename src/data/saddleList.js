@@ -83,7 +83,7 @@ export default [
   'Tapejara_Tek_Saddle.png.jpg',
   'Terror_Bird_Saddle.png.jpg',
   'Therizinosaurus_Saddle.png.jpg',
-  'Thorny_Dragon_Saddle.png.jpg',
+  'Thorny Dragon_Saddle.png.jpg',
   'Thylacoleo_Saddle.png.jpg',
   'Titanosaur_Platform_Saddle.png.jpg',
   'Trike_Saddle.png.jpg',

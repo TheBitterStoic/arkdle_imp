@@ -527,7 +527,7 @@ const dinoData = [
     diet: 'Herbivore',
     size: 'Small',
     biome: 'Cave',
-    traversal: 'Ground'
+    traversal: 'Flyer'
   },
   {
     name: 'Fenrir',
