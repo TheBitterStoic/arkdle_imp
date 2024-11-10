@@ -359,11 +359,11 @@ body, html {
 }
 
 .cell-correct {
-  background-color: #10e444;
+  background-color: #1a8b1e;
 }
 
 .cell-incorrect {
-  background-color: #e40d08;
+  background-color: #b6202f;
 }
 
 .table-image {
