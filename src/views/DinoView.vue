@@ -41,7 +41,7 @@
               <tr>
                 <th class="table-header">IMAGE</th>
                 <th class="table-header">NAME</th>
-                <th class="table-header">DLC'S</th>
+                <th class="table-header">ORIGIN</th>
                 <th class="table-header">RELEASE DATE</th>
                 <th class="table-header">TEMPERAMENT</th>
                 <th class="table-header">DIET</th>
