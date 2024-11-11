@@ -1504,7 +1504,7 @@ const dinoData = [
     dlc: 'Scorched Earth',
     releaseDate: '2016',
     temperament: 'Aggressive',
-    diet: 'Herbivore',
+    diet: 'Carnivore',
     size: 'Medium',
     biome: 'Desert',
     traversal: 'Ground'
@@ -1676,7 +1676,7 @@ const dinoData = [
     temperament: 'Aggressive',
     diet: 'Carnivore',
     size: 'Large',
-    biome: 'Plains',
+    biome: 'Snowy Mountains',
     traversal: 'Ground'
   }
 ];
