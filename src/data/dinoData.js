@@ -6,7 +6,7 @@ const dinoData = [
     temperament: 'Docile',
     diet: 'Herbivore',
     size: 'Small',
-    biome: 'Forest',
+    biome: 'Swamp',
     traversal: 'Ground'
   },
   {
