@@ -87,7 +87,7 @@ export default {
   }
 
   .button-text {
-    font-size: 24px; /* Adjust font size for smaller screens */
+    font-size: 22px; /* Adjust font size for smaller screens */
   }
 
   .button-image {
