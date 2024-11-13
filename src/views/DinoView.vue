@@ -35,7 +35,7 @@
 
       <!-- Table Section to Show Guess vs. Correct Dino -->
       <div class="table-container">
-        <div class="table-scroll"> <!-- Added this wrapper for scrolling -->
+        <div class="table-scroll">
           <table v-if="guesses.length" class="dino-table">
             <thead>
               <tr>
@@ -87,17 +87,20 @@ export default {
       correctDino: null,
       isCorrectGuess: false,
       guesses: [],
-      dailyDateKey: this.getDateKey(), // Generate the date key on initialization
-      correctDinoData: null, // Store the data for the correct dino
+      dailyDateKey: this.getDateKey(),
+      correctDinoData: null,
     };
   },
   computed: {
     filteredDinosaurs() {
-      return this.dinosaurs
-        .filter(dino =>
-          dino.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
-          !this.guesses.some(guess => guess.name === dino)
-        );
+      // Step 1: Filter dinosaurs that start with searchTerm
+      const filtered = this.dinosaurs.filter(dino =>
+        dino.toLowerCase().startsWith(this.searchTerm.toLowerCase()) &&
+        !this.guesses.some(guess => guess.name === dino)
+      );
+      
+      // Step 2: Sort the filtered dinosaurs in alphabetical order
+      return filtered.sort((a, b) => a.localeCompare(b));
     }
   },
   methods: {
@@ -106,8 +109,7 @@ export default {
       const start = new Date(now.getFullYear(), 0, 0);
       const diff = now - start;
       const oneDay = 1000 * 60 * 60 * 24;
-      const dayOfYear = Math.floor(diff / oneDay) + 1;
-
+      const dayOfYear = Math.floor(diff / oneDay);
       const index = dayOfYear % this.dinosaurs.length;
       return this.dinosaurs[index];
     },

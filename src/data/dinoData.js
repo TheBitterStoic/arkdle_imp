@@ -216,7 +216,7 @@ const dinoData = [
     temperament: 'Docile',
     diet: 'Herbivore',
     size: 'Medium',
-    biome: 'Swamp',
+    biome: 'Beach',
     traversal: 'Swimmer'
   },
   {
