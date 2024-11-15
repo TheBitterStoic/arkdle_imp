@@ -616,7 +616,7 @@ const dinoData = [
     temperament: 'Angry',
     diet: 'Carnivore',
     size: 'Extra Large',
-    biome: 'Plains',
+    biome: 'Mountain',
     traversal: 'Ground'
   },
   {
