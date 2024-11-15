@@ -63,8 +63,8 @@
 </template>
 
 <script>
-import soundList from '@/data/soundList';
 import dinoList from '@/data/dinoList';
+import soundList from '@/data/soundList';
 
 export default {
   name: 'SoundView',
@@ -72,6 +72,7 @@ export default {
     return {
       searchTerm: '',
       soundFiles: soundList,
+      dinosaurs: dinoList, // Using the dinoList here
       correctDino: null,
       isCorrectGuess: false,
       guesses: [],
@@ -84,21 +85,22 @@ export default {
   },
   computed: {
     filteredDinosaurs() {
-      return this.soundFiles
-        .map(file => file.replace('sound.mp3', ''))
+      return this.dinosaurs
         .filter(dino => 
-          dino.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
+          dino.toLowerCase().includes(this.searchTerm.toLowerCase()) && 
           !this.guesses.includes(dino)
-        );
+        )
+        .sort((a, b) => a.localeCompare(b)); // Sort alphabetically
     }
   },
   methods: {
     getDailyDino() {
+      // Generate a random index based on the date
       const now = new Date();
       const start = new Date(now.getFullYear(), 0, 0);
       const dayOfYear = Math.floor((now - start) / (1000 * 60 * 60 * 24));
       const index = dayOfYear % this.soundFiles.length;
-      return this.soundFiles[index].replace('sound.mp3', '');
+      return this.soundFiles[index].replace('sound.mp3', ''); // Match the sound file with dino name
     },
     getDinoImage(dinoName) {
       try {
