@@ -3,7 +3,7 @@
     <div class="saddle-page">
       <div class="guess-saddle-container">
         <h2>Guess the Saddle</h2>
-        
+
         <!-- Saddle image based on the day with border -->
         <div class="saddle-image-container">
           <img :src="dailySaddleImage" alt="Saddle of the Day" class="saddle-image" />
@@ -52,7 +52,7 @@
             <tr
               v-for="guess in guesses"
               :key="guess"
-              :class="{'row-correct': guess === correctDino, 'row-incorrect': guess !== correctDino}"
+              :class="{ 'row-correct': guess === correctDino, 'row-incorrect': guess !== correctDino }"
             >
               <td>{{ guess }}</td>
             </tr>
@@ -71,7 +71,7 @@ export default {
   data() {
     return {
       searchTerm: '',
-      saddles: saddleList,
+      saddles: saddleList, // saddleList is now an object
       correctDino: null,
       isCorrectGuess: false,
       guesses: [],
@@ -83,26 +83,52 @@ export default {
   },
   computed: {
     dailySaddleImage() {
-      return this.getSaddleImage(this.correctDino);
-    },
+  const obfuscatedKey = Object.keys(this.saddles).find(
+    (key) => this.saddles[key].replace(/_Saddle\.png$/i, '') === this.correctDino
+  );
+
+  console.log('Correct Dino:', this.correctDino); // Logs the correct dino name
+  console.log('Resolved Key:', obfuscatedKey); // Logs the obfuscated key being used
+
+  if (!obfuscatedKey) {
+    console.error('No matching obfuscated key found for the correct dino!');
+  }
+
+  return obfuscatedKey ? this.getSaddleImage(obfuscatedKey) : this.getSaddleImage('default');
+}
+,
     filteredDinosaurs() {
-      return this.saddles
-        .map(saddle => saddle.replace('_Saddle.png.jpg', ''))
-        .filter(dino => 
-          dino.toLowerCase().includes(this.searchTerm.toLowerCase()) && 
+      const dinoNames = Object.values(this.saddles).map(dino =>
+        dino.replace(/_Saddle\.png$/i, '') // Clean up names
+      );
+      return dinoNames.filter(
+        (dino) =>
+          dino.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
           !this.guesses.includes(dino)
-        );
+      );
     },
   },
   methods: {
     getDailyDino() {
-      const now = new Date();
-      const start = new Date(now.getFullYear(), 0, 0);
-      const diff = now - start;
-      const oneDay = 1000 * 60 * 60 * 24;
-      const dayOfYear = Math.floor(diff / oneDay);
-      return this.saddles[dayOfYear % this.saddles.length].replace('_Saddle.png.jpg', '');
-    },
+  const now = new Date();
+  const start = new Date(now.getFullYear(), 0, 0);
+  const diff = now - start;
+  const oneDay = 1000 * 60 * 60 * 24;
+  const dayOfYear = Math.floor(diff / oneDay) + 20;
+
+  const keys = Object.keys(this.saddles);
+  if (keys.length === 0) {
+    console.error('saddleList is empty!');
+    return 'Unknown_Saddle';
+  }
+
+  const keyForToday = keys[dayOfYear % keys.length];
+  console.log('Key for Today:', keyForToday); // Debugging key for the day
+  console.log('Mapped Dino Name:', this.saddles[keyForToday]); // Debugging mapped dino name
+
+  return this.saddles[keyForToday].replace(/_Saddle\.png$/i, ''); // Clean up the name
+}
+,
     getDateKey() {
       const now = new Date();
       return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
@@ -114,18 +140,17 @@ export default {
         this.guesses.unshift(dino);
         this.incorrectGuesses++;
 
-        // Update the hint when incorrect guesses reach 5 or more
         if (this.incorrectGuesses >= 5) {
           this.updateHint();
         }
 
-        this.saveState(); // Save the state whenever a guess is made
+        this.saveState();
       }
 
       this.searchTerm = '';
 
       if (this.isCorrectGuess) {
-        this.saveState(); // Save the state when guessed correctly
+        this.saveState();
       }
     },
     submitTopSuggestion() {
@@ -133,13 +158,15 @@ export default {
         this.checkDinoGuess(this.filteredDinosaurs[0]);
       }
     },
-    getSaddleImage(dinoName) {
-      try {
-        return require(`@/assets/saddle_images/${dinoName}_Saddle.png.jpg`);
-      } catch (e) {
-        return require('@/assets/saddle_images/default.png');
-      }
-    },
+    getSaddleImage(obfuscatedKey) {
+  try {
+    // Use the obfuscated key to construct the image path
+    return require(`@/assets/saddle_images/${obfuscatedKey}.jpg`);
+  } catch (e) {
+    console.error(`Image not found for key: ${obfuscatedKey}`, e); // Log the missing key
+    return require('@/assets/saddle_images/default.png');
+  }
+},
     saveState() {
       const state = {
         isCorrectGuess: this.isCorrectGuess,
@@ -157,15 +184,15 @@ export default {
         this.incorrectGuesses = savedState.incorrectGuesses || 0;
         this.revealedHint = savedState.revealedHint || '_'.repeat(this.correctDino.length);
       } else {
-        this.resetGame(); // If no state for today, reset the game
+        this.resetGame();
       }
     },
     resetGame() {
       this.isCorrectGuess = false;
       this.guesses = [];
       this.incorrectGuesses = 0;
-      this.revealedHint = '_'.repeat(this.correctDino.length); // Initialize hint with underscores
-      this.saveState(); // Save the reset state for the new day
+      this.revealedHint = '_'.repeat(this.correctDino.length);
+      this.saveState();
     },
     updateHint() {
       const revealLetters = Math.floor(this.incorrectGuesses / 2);
@@ -185,7 +212,7 @@ export default {
   },
   mounted() {
     this.correctDino = this.getDailyDino();
-    this.revealedHint = '_'.repeat(this.correctDino.length); // Initialize hint with underscores
+    this.revealedHint = '_'.repeat(this.correctDino.length);
     if (localStorage.getItem(`saddleGuessState-${this.dailyDateKey}`)) {
       this.loadState();
     } else {
@@ -298,13 +325,19 @@ export default {
 }
 
 .correct-message {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center-align content */
   padding: 10px;
   font-size: 16px;
-  background-color: #4caf50;
+  background: url('@/assets/ArkMenuThree.png'); /* Background image */
+  background-position: center; /* Center the background image */
+  background-size: cover; /* Ensure the background covers the entire container */
   color: white;
   text-align: center;
   border-radius: 4px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #B8860B; /* Dark gold border */
 }
 
 .table-container {
