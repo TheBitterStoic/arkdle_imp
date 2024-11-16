@@ -292,6 +292,7 @@ export default {
 .hint-text {
   font-size: 20px;
   color: #ffffff;
+  letter-spacing: 2px; /* Add this line */
 }
 
 .begin-text {

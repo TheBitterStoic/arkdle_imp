@@ -1,5 +1,34 @@
 <template>
   <div class="dino-page-container">
+     <!-- "?" Button -->
+     <button class="help-button" @click="showPopup = true">?</button>
+
+<!-- Popup Modal -->
+<div v-if="showPopup" class="popup-overlay">
+  <div class="popup-content">
+    <button class="close-button" @click="showPopup = false">X</button>
+    <h3>How to Play</h3>
+  <p>
+    Every day at 01:00 GMT, a random creature from Ark is chosen for you to guess.
+  </p>
+  <p>
+    <strong>Getting Started:</strong><br>
+    Type the name of any dinosaur to begin. A table will appear showing the stats of your guessed dinosaur.
+  </p>
+  <p>
+    <strong>Understanding the Table:</strong><br>
+    <span class="green-text">Green background</span>: Your guess shares this stat with the chosen dinosaur.<br>
+    <span class="red-text">Red background</span>: Your guess does not share this stat with the chosen dinosaur.
+  </p>
+  <p>
+    If you notice any errors in the dinosaur stats or have feature suggestions, please email us at <a href="mailto:arkdlefeedback@gmail.com">arkdlefeedback@gmail.com</a>.
+  </p>
+  <p>
+    Happy guessing!
+  </p>
+
+  </div>
+</div>
     <div class="dino-page">
       <!-- Guess Today's Dino Section -->
       <div class="guess-dino-container">
@@ -89,6 +118,7 @@ export default {
       guesses: [],
       dailyDateKey: this.getDateKey(),
       correctDinoData: null,
+      showPopup: false,
     };
   },
   computed: {
@@ -374,7 +404,92 @@ body, html {
   object-fit: contain; /* Ensures the image scales correctly */
   border-radius: 4px;
 }
+.help-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: url('@/assets/ArkMenuThree.png');
+  color: #dbe6e9;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 3; /* Ensure it appears above other elements */
+}
 
+/* Popup Overlay Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4; /* Ensure it appears above the help button */
+}
+
+/* Popup Content Styles */
+.popup-content {
+  background-color: #161616;
+  color: #e7eef0;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  font-family: Arial, sans-serif;
+  text-align: left;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Close Button Styles */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  color: #b6202f;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Heading Styles */
+.popup-content h3 {
+  margin-top: 0;
+  color: #285c74;
+}
+
+/* Paragraph Styles */
+.popup-content p {
+  margin-bottom: 15px;
+}
+
+/* Text Color Indicators */
+.green-text {
+  color: #1a8b1e;
+  font-weight: bold;
+}
+
+.red-text {
+  color: #b6202f;
+  font-weight: bold;
+}
+
+/* Link Styles */
+.popup-content a {
+  color: #285c74;
+  text-decoration: none;
+}
+
+.popup-content a:hover {
+  text-decoration: underline;
+}
 @media (max-width: 950px) {
   .dino-page-container {
     max-width: 90%; /* Adjust the width to be smaller */
