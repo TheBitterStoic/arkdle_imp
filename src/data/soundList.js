@@ -2,6 +2,7 @@
 export default [
   'Pteranodonsound.mp3',
   'Glowtailsound.mp3',
+  'Dimetrodonsound.mp3',
   'Mammothsound.mp3',
   'Baryonyxsound.mp3',
   'Gigantopithecussound.mp3',
@@ -34,7 +35,6 @@ export default [
   'Leedsichthyssound.mp3',
   'Rexsound.mp3',
   'Karkinossound.mp3',
-  'Dimetrodonsound.mp3',
   'Basilisksound.mp3',
   'Crystal Wyvernsound.mp3',
   'Megatheriumsound.mp3',
