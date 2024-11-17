@@ -59,7 +59,7 @@ export default {
   "256e7eaf0b5d8d6a": "Argentavis_Saddle.png",
   "e14634516f735c40": "Rock Drake_Tek_Saddle.png",
   "2ca13ff4ab453583": "Roll Rat_Saddle.png",
-  "2be3f1e9b2dd6a37": "Ankylo_Saddle.png",
+  "2be3f1e9b2dd6a37": "Ankylosaurus_Saddle.png",
   "768bf5930be63430": "Titanosaur_Platform_Saddle.png",
   "cfc547355f89eca7": "Gacha_Saddle.png",
   "a0bb5d45a22e1082": "Mosasaur_Tek_Saddle.png",
