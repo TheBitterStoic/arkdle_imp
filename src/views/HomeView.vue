@@ -25,7 +25,7 @@
     </router-link>
 
     <!-- Button to navigate to Map page -->
-    <router-link to="/mapview" class="button-link">
+    <router-link to="/map" class="button-link">
       <div class="rect-button">
         <img src="@/assets/MapMini.png" alt="Map Page" class="button-image" />
         <span class="button-text">GUESS THE PLACE</span>
