@@ -461,7 +461,7 @@ body, html {
 }
 
 .cell-correct {
-  background-color: #1a8b1e;
+  background-color: #16C95D;
 }
 
 .cell-incorrect {
@@ -542,7 +542,7 @@ body, html {
 
 /* Text Color Indicators */
 .green-text {
-  color: #1a8b1e;
+  color: #16C95D;
   font-weight: bold;
 }
 
