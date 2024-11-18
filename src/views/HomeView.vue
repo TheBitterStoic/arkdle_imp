@@ -23,13 +23,21 @@
         <span class="button-text">GUESS THE SOUND</span>
       </div>
     </router-link>
+
+    <!-- Button to navigate to Map page -->
+    <router-link to="/mapview" class="button-link">
+      <div class="rect-button">
+        <img src="@/assets/MapMini.png" alt="Map Page" class="button-image" />
+        <span class="button-text">GUESS THE PLACE</span>
+      </div>
+    </router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HomeView'
-}
+  name: "HomeView",
+};
 </script>
 
 <style scoped>
@@ -76,8 +84,9 @@ export default {
   font-size: 30px; /* Font size for button text */
   color: #88e9ff; /* Text color */
   font-weight: bold; /* Make text bold */
-  font-family: 'Posterama';
+  font-family: "Posterama";
 }
+
 @media (max-width: 447px) {
   .rect-button {
     width: 300px; /* Make buttons full-width */

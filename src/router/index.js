@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import DinoView from '../views/DinoView.vue'
 import SaddleView from '../views/SaddleView.vue'
 import SoundView from '../views/SoundView.vue'
+import MapView from '@/views/MapView.vue'; // Import the new MapView component
 import InfoView from '@/views/InfoView.vue'; 
 import PrivacyPolicy from '@/views/PrivacyPolicy.vue'; // Import the new component
 
@@ -36,6 +37,11 @@ const routes = [
     path: '/privacy', // New route for Privacy Policy
     name: 'PrivacyPolicy',
     component: PrivacyPolicy
+  },
+  {
+    path: '/map',
+    name: 'Map',
+    component: MapView
   }
 ]
 

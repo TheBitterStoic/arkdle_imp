@@ -206,7 +206,7 @@ const dinoData = [
     temperament: 'Passive',
     diet: 'Herbivore',
     size: 'Small',
-    biome: 'Cave',
+    biome: 'Forest',
     traversal: 'Ground'
   },
   {
@@ -296,7 +296,7 @@ const dinoData = [
     temperament: 'Docile',
     diet: 'Carnivore',
     size: 'Large',
-    biome: 'Tropical',
+    biome: 'Beach',
     traversal: 'Flyer'
   },
   {
@@ -1396,7 +1396,7 @@ const dinoData = [
     temperament: 'Aggressive',
     diet: 'Carnivore',
     size: 'Medium',
-    biome: 'Tropical',
+    biome: 'Forest',
     traversal: 'Ground'
   },
   {
@@ -1416,7 +1416,7 @@ const dinoData = [
     temperament: 'Reactive',
     diet: 'Insectivore',
     size: 'Small',
-    biome: 'Tropical',
+    biome: 'Jungle',
     traversal: 'Flyer'
   },
   {
@@ -1586,7 +1586,7 @@ const dinoData = [
     temperament: 'Neutral',
     diet: 'Carnivore',
     size: 'Medium',
-    biome: 'Tropical',
+    biome: 'Jungle',
     traversal: 'Flyer'
   },
   {

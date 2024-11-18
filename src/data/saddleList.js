@@ -8,7 +8,6 @@ export default {
   "fd07af9e7a6fde6b": "Carnotaurus_Saddle.png",
   "6d318bb0e4c76795": "Carcharodontosaurus_Saddle.png",
   "b5565ef0626c6add": "Doedicurus_Saddle.png",
-  "e11cc447313fc704": "Xiphactinus_Saddle.png",
   "285fae2afe667a13": "Megalosaurus_Saddle.png",
   "469de8fe8270e673": "Gigantoraptor_Saddle.png",
   "fdd7e9718f3dd956": "Lymantria_Saddle.png",

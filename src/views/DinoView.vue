@@ -1,34 +1,38 @@
 <template>
   <div class="dino-page-container">
-     <!-- "?" Button -->
-     <button class="help-button" @click="showPopup = true">?</button>
+    <!-- "?" Button -->
+    <button class="help-button" @click="showPopup = true">?</button>
 
-<!-- Popup Modal -->
-<div v-if="showPopup" class="popup-overlay">
-  <div class="popup-content">
-    <button class="close-button" @click="showPopup = false">X</button>
-    <h3>How to Play</h3>
-  <p>
-    Every day at 01:00 GMT, a random creature from Ark is chosen for you to guess.
-  </p>
-  <p>
-    <strong>Getting Started:</strong><br>
-    Type the name of any dinosaur to begin. A table will appear showing the stats of your guessed dinosaur.
-  </p>
-  <p>
-    <strong>Understanding the Table:</strong><br>
-    <span class="green-text">Green background</span>: Your guess shares this stat with the chosen dinosaur.<br>
-    <span class="red-text">Red background</span>: Your guess does not share this stat with the chosen dinosaur.
-  </p>
-  <p>
-    If you notice any errors in the dinosaur stats or have feature suggestions, please email us at <a href="mailto:arkdlefeedback@gmail.com">arkdlefeedback@gmail.com</a>.
-  </p>
-  <p>
-    Happy guessing!
-  </p>
+    <!-- Popup Modal -->
+    <div v-if="showPopup" class="popup-overlay">
+      <div class="popup-content">
+        <button class="close-button" @click="showPopup = false">X</button>
+        <h3>How to Play</h3>
+        <p>
+          Every day at 01:00 GMT, a random creature from Ark is chosen for you
+          to guess.
+        </p>
+        <p>
+          <strong>Getting Started:</strong><br />
+          Type the name of any dinosaur to begin. A table will appear showing
+          the stats of your guessed dinosaur.
+        </p>
+        <p>
+          <strong>Understanding the Table:</strong><br />
+          <span class="green-text">Green background</span>: Your guess shares
+          this stat with the chosen dinosaur.<br />
+          <span class="red-text">Red background</span>: Your guess does not
+          share this stat with the chosen dinosaur.
+        </p>
+        <p>
+          If you notice any errors in the dinosaur stats or have feature
+          suggestions, please email me at
+          <a href="mailto:arkdlefeedback@gmail.com">arkdlefeedback@gmail.com</a>.
+        </p>
+        <p>Happy guessing!</p>
+      </div>
+    </div>
 
-  </div>
-</div>
     <div class="dino-page">
       <!-- Guess Today's Dino Section -->
       <div class="guess-dino-container">
@@ -48,18 +52,42 @@
 
         <!-- Success message overlay when the correct dino is guessed -->
         <div v-else class="correct-message">
-          🎉 Congratulations! You've guessed today's dino: {{ correctDino }} in {{ guesses.length }} guesses! 🎉
-          <img :src="getDinoImage(correctDino)" alt="Dinosaur" class="victory-image" />
+          🎉 Congratulations! You've guessed today's dino: {{ correctDino }} in
+          {{ guesses.length }} guesses! 🎉
+          <img
+            :src="getDinoImage(correctDino)"
+            alt="Dinosaur"
+            class="victory-image"
+          />
         </div>
 
+        <!-- Next Button -->
+        <div v-if="isCorrectGuess" class="next-button-container">
+  <button class="rect-button" @click="goToSaddlePage">
+    NEXT
+  </button>
+</div>
+
         <!-- Dropdown List for Filtered Dinosaurs -->
-        <ul v-if="!isCorrectGuess && searchTerm && filteredDinosaurs.length" class="dropdown">
-          <li v-for="dino in filteredDinosaurs" :key="dino" @click="checkDinoGuess(dino)">
+        <ul
+          v-if="!isCorrectGuess && searchTerm && filteredDinosaurs.length"
+          class="dropdown"
+        >
+          <li
+            v-for="dino in filteredDinosaurs"
+            :key="dino"
+            @click="checkDinoGuess(dino)"
+          >
             {{ dino }}
             <img :src="getDinoImage(dino)" :alt="dino" class="dino-image" />
           </li>
         </ul>
-        <p v-if="searchTerm && !filteredDinosaurs.length" class="no-match">No matches found</p>
+        <p v-if="searchTerm && !filteredDinosaurs.length" class="no-match">
+          No matches found
+        </p>
+        <p v-if="windowWidth < 950" class="scroll-hint">
+          You can scroll left and right to view the table.
+        </p>
       </div>
 
       <!-- Table Section to Show Guess vs. Correct Dino -->
@@ -80,20 +108,42 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="guess in guesses" :key="guess.name">
+              <tr
+                v-for="guess in guesses"
+                :key="guess.name"
+                :class="{
+                  'row-correct': guess.name === correctDino,
+                  'row-incorrect': guess.name !== correctDino,
+                }"
+              >
                 <td class="image-cell">
-                  <img :src="getDinoImage(guess.name)" :alt="guess.name" class="table-image" />
+                  <img
+                    :src="getDinoImage(guess.name)"
+                    :alt="guess.name"
+                    class="table-image"
+                  />
                 </td>
-                <td :class="{'cell-correct': guess.name === correctDino, 'cell-incorrect': guess.name !== correctDino}">
+                <td
+                  :class="{
+                    'cell-correct': guess.name === correctDino,
+                    'cell-incorrect': guess.name !== correctDino,
+                  }"
+                >
                   {{ guess.name }}
                 </td>
                 <td :class="getCellClass(guess, 'dlc')">{{ guess.dlc }}</td>
-                <td :class="getCellClass(guess, 'releaseDate')">{{ guess.releaseDate }}</td>
-                <td :class="getCellClass(guess, 'temperament')">{{ guess.temperament }}</td>
+                <td :class="getCellClass(guess, 'releaseDate')">
+                  {{ guess.releaseDate }}
+                </td>
+                <td :class="getCellClass(guess, 'temperament')">
+                  {{ guess.temperament }}
+                </td>
                 <td :class="getCellClass(guess, 'diet')">{{ guess.diet }}</td>
                 <td :class="getCellClass(guess, 'size')">{{ guess.size }}</td>
                 <td :class="getCellClass(guess, 'biome')">{{ guess.biome }}</td>
-                <td :class="getCellClass(guess, 'traversal')">{{ guess.traversal }}</td>
+                <td :class="getCellClass(guess, 'traversal')">
+                  {{ guess.traversal }}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -104,14 +154,14 @@
 </template>
 
 <script>
-import dinoList from '@/data/dinoList';
-import dinoData from '@/data/dinoData.js';
+import dinoList from "@/data/dinoList";
+import dinoData from "@/data/dinoData.js";
 
 export default {
-  name: 'DinoView',
+  name: "DinoView",
   data() {
     return {
-      searchTerm: '',
+      searchTerm: "",
       dinosaurs: dinoList,
       correctDino: null,
       isCorrectGuess: false,
@@ -119,19 +169,18 @@ export default {
       dailyDateKey: this.getDateKey(),
       correctDinoData: null,
       showPopup: false,
+      windowWidth: window.innerWidth, // Track window width
     };
   },
   computed: {
     filteredDinosaurs() {
-      // Step 1: Filter dinosaurs that start with searchTerm
-      const filtered = this.dinosaurs.filter(dino =>
-        dino.toLowerCase().startsWith(this.searchTerm.toLowerCase()) &&
-        !this.guesses.some(guess => guess.name === dino)
+      const filtered = this.dinosaurs.filter(
+        (dino) =>
+          dino.toLowerCase().startsWith(this.searchTerm.toLowerCase()) &&
+          !this.guesses.some((guess) => guess.name === dino)
       );
-      
-      // Step 2: Sort the filtered dinosaurs in alphabetical order
       return filtered.sort((a, b) => a.localeCompare(b));
-    }
+    },
   },
   methods: {
     getDailyDino() {
@@ -150,17 +199,17 @@ export default {
     checkDinoGuess(dino) {
       this.isCorrectGuess = dino === this.correctDino;
 
-      const guessedDino = dinoData.find(d => d.name === dino);
-      if (guessedDino && !this.guesses.some(guess => guess.name === guessedDino.name)) {
+      const guessedDino = dinoData.find((d) => d.name === dino);
+      if (guessedDino && !this.guesses.some((guess) => guess.name === guessedDino.name)) {
         this.guesses.unshift(guessedDino);
-        this.saveState(); // Save the state whenever a guess is made
+        this.saveState();
       }
 
       if (this.isCorrectGuess) {
-        this.saveState(); // Save the state when guessed correctly
+        this.saveState();
       }
 
-      this.searchTerm = '';
+      this.searchTerm = "";
     },
     submitTopSuggestion() {
       if (this.filteredDinosaurs.length > 0) {
@@ -171,22 +220,29 @@ export default {
       try {
         return require(`@/assets/dino_images/${dinoName}.png`);
       } catch (e) {
-        return require('@/assets/dino_images/Araneo.png');
+        return require("@/assets/dino_images/Araneo.png");
       }
     },
     getCellClass(guess, attribute) {
-      if (!this.correctDinoData) return '';
-      return guess[attribute] === this.correctDinoData[attribute] ? 'cell-correct' : 'cell-incorrect';
+      if (!this.correctDinoData) return "";
+      return guess[attribute] === this.correctDinoData[attribute]
+        ? "cell-correct"
+        : "cell-incorrect";
     },
     saveState() {
       const state = {
         isCorrectGuess: this.isCorrectGuess,
         guesses: this.guesses,
       };
-      localStorage.setItem(`dinoGuessState-${this.dailyDateKey}`, JSON.stringify(state));
+      localStorage.setItem(
+        `dinoGuessState-${this.dailyDateKey}`,
+        JSON.stringify(state)
+      );
     },
     loadState() {
-      const savedState = JSON.parse(localStorage.getItem(`dinoGuessState-${this.dailyDateKey}`));
+      const savedState = JSON.parse(
+        localStorage.getItem(`dinoGuessState-${this.dailyDateKey}`)
+      );
       if (savedState) {
         this.isCorrectGuess = savedState.isCorrectGuess || false;
         this.guesses = savedState.guesses || [];
@@ -195,21 +251,34 @@ export default {
     resetGame() {
       this.isCorrectGuess = false;
       this.guesses = [];
-      this.saveState(); // Save the reset state for the new day
-    }
+      this.saveState();
+    },
+    updateWindowWidth() {
+      this.windowWidth = window.innerWidth;
+    },
+    goToSaddlePage() {
+      this.$router.push('/saddle');
+    },
   },
   mounted() {
     this.correctDino = this.getDailyDino();
-    this.correctDinoData = dinoData.find(d => d.name === this.correctDino);
+    this.correctDinoData = dinoData.find((d) => d.name === this.correctDino);
     if (localStorage.getItem(`dinoGuessState-${this.dailyDateKey}`)) {
       this.loadState();
     } else {
       this.resetGame();
     }
+
+    // Add resize event listener
+    window.addEventListener("resize", this.updateWindowWidth);
+  },
+  beforeDestroy() {
+    // Remove resize event listener
+    window.removeEventListener("resize", this.updateWindowWidth);
   },
   watch: {
-    guesses: 'saveState',
-    isCorrectGuess: 'saveState',
+    guesses: "saveState",
+    isCorrectGuess: "saveState",
   },
 };
 </script>
@@ -288,6 +357,7 @@ body, html {
   width: 100%;
   max-width: 300px;
   margin: 0 auto;
+  
 }
 
 .dino-input {
@@ -359,7 +429,7 @@ body, html {
 .table-container {
   display: flex; /* Use flexbox to center the table */
   justify-content: center; /* Center horizontally */
-  margin-top: 20px; /* Optional margin for spacing */
+  margin-top: 5px; /* Optional margin for spacing */
 }
 .table-scroll {
   overflow-x: auto; /* Enable horizontal scrolling */
@@ -490,6 +560,49 @@ body, html {
 .popup-content a:hover {
   text-decoration: underline;
 }
+.scroll-hint {
+  font-size: 14px;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+/* Center the container */
+.next-button-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100%; /* Take the full height of the parent */
+  margin-top: 20px; /* Optional spacing */
+}
+
+/* Style the button */
+.rect-button {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the text */
+  width: 110px; /* Button width */
+  height: 50px; /* Button height */
+  background: linear-gradient(to bottom, #285c74, #1a404e, #285c74); /* Gradient background */
+  border-radius: 5px; /* Slightly rounded corners */
+  padding: 0; /* Remove padding */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transitions */
+  border: 3px solid #408aa5; /* Border color */
+  font-size: 20px; /* Font size */
+  color: #88e9ff; /* Text color */
+  font-weight: bold; /* Bold text */
+  font-family: "Posterama", sans-serif; /* Font family */
+  text-align: center; /* Align text */
+}
+
+.rect-button:hover {
+  /* Hover effect */
+  background: linear-gradient(to bottom, #3d88aa, #285c74, #3d88aa);
+  border-color: #f5f5f5; /* Change border color on hover */
+}
+
 @media (max-width: 950px) {
   .dino-page-container {
     max-width: 90%; /* Adjust the width to be smaller */

@@ -10,55 +10,9 @@
     <p>
       I am a solo developer currently in University, so if you have any suggestions/criticism, email: arkdlefeedback@gmail.com.
     </p>
-    <p>
-    If you’d like to help me keep improving and making new content, please consider supporting me. Your contributions go directly towards development costs, server maintenance, and helping me bring even more fun features to life.
-    </p>
-    <div id="donate-button-container">
-      <div id="donate-button"></div>
-    </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'InfoView',
-  mounted() {
-    this.loadPayPalScript();
-  },
-  methods: {
-    loadPayPalScript() {
-      const script = document.createElement('script');
-      script.src = "https://www.paypalobjects.com/donate/sdk/donate-sdk.js";
-      script.async = true;
-
-      script.onload = () => {
-        this.renderPayPalButton();
-      };
-
-      script.onerror = () => {
-        console.error("Failed to load the PayPal SDK script.");
-      };
-
-      document.body.appendChild(script);
-    },
-    renderPayPalButton() {
-      if (window.PayPal) {
-        window.PayPal.Donation.Button({
-          env: 'production',
-          hosted_button_id: 'K66PBFB7USXTW', // Replace with your actual button ID
-          image: {
-            src: 'https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif',
-            alt: 'Donate with PayPal button',
-            title: 'PayPal - The safer, easier way to pay online!',
-          }
-        }).render('#donate-button');
-      } else {
-        console.error("PayPal SDK not loaded.");
-      }
-    }
-  }
-};
-</script>
 
 <style scoped>
 .info-page {
