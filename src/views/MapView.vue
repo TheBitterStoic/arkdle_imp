@@ -84,6 +84,27 @@
         </p>
       </div>
     </div>
+       <!-- Feedback Form -->
+       <div class="feedback-container">
+      <h2>Image submission</h2>
+      <p class="feedback-instructions">
+        Please provide the following information:
+      </p>
+      <ul class="feedback-list">
+        <li>The fullscreen image in game</li>
+        <li>No HUD and preferably no hands in the image</li>
+        <li>The co-ordinates of the location</li>
+      </ul>
+      <form @submit.prevent="sendFeedback">
+        <textarea
+          v-model="feedbackText"
+          class="feedback-textarea"
+          placeholder="Type here"
+        ></textarea>
+        <input type="file" multiple @change="handleFileUpload" class="feedback-file-input" />
+        <button type="submit" class="feedback-submit-button">Send Feedback</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -105,12 +126,33 @@ export default {
       tries: 0, // Number of attempts
       hasPlacedCircle: false, // Whether a circle has been placed
       dailyKey: "", // Key for today's date in localStorage
+      feedbackText: "", // Feedback text
+      feedbackFiles: [], // Uploaded files
     };
   },
   methods: {
     getDailyKey() {
       const now = new Date();
       return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+    },
+    handleFileUpload(event) {
+      this.feedbackFiles = Array.from(event.target.files);
+    },
+    sendFeedback() {
+      const email = "arkdlefeedback@gmail.com";
+      const subject = encodeURIComponent("Anonymous Feedback");
+      const body = encodeURIComponent(this.feedbackText);
+      const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+
+      console.log("Files to attach:", this.feedbackFiles);
+
+      // Open mail client with pre-filled feedback
+      window.location.href = mailtoLink;
+
+      // Reset feedback form
+      this.feedbackText = "";
+      this.feedbackFiles = [];
+      alert("Thank you for your feedback!");
     },
     getDailyFeaturedLocation() {
       const now = new Date();
@@ -498,7 +540,68 @@ export default {
 .popup-content a:hover {
   text-decoration: underline;
 }
+.feedback-container {
+  width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #285c74;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+}
 
+.feedback-container h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #88e9ff;
+}
+
+.feedback-instructions {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.feedback-list {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  color: #ffffff;
+}
+
+.feedback-textarea {
+  width: 90%;
+  height: 100px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: none;
+  resize: none;
+  font-size: 16px;
+  color: #285c74;
+}
+
+.feedback-file-input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.feedback-submit-button {
+  background-color: #1a8b1e;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+.feedback-submit-button:hover {
+  background-color: #148c19;
+}
 @media (max-width: 850px) {
   .map-page-container {
     max-width: 90%; /* Adjust width for smaller screens */
@@ -564,6 +667,32 @@ export default {
     width: 25px; /* Reduce button size */
     height: 25px; /* Adjust button size */
     font-size: 16px; /* Adjust text size */
+  }
+  .feedback-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .feedback-container h2 {
+    font-size: 22px;
+  }
+
+  .feedback-instructions {
+    font-size: 15px;
+  }
+
+  .feedback-list {
+    font-size: 14px;
+  }
+
+  .feedback-textarea {
+    height: 80px;
+    font-size: 14px;
+  }
+
+  .feedback-submit-button {
+    font-size: 14px;
+    padding: 8px 15px;
   }
 }
 @media (max-width: 440px) {
@@ -636,6 +765,32 @@ export default {
   .featured-image {
     max-width: 100%; /* Ensure it fits the screen */
     margin: 5px auto; /* Smaller spacing */
+  }
+  .feedback-container {
+    width: 80%;
+    padding: 10px;
+  }
+
+  .feedback-container h2 {
+    font-size: 20px;
+  }
+
+  .feedback-instructions {
+    font-size: 14px;
+  }
+
+  .feedback-list {
+    font-size: 12px;
+  }
+
+  .feedback-textarea {
+    height: 70px;
+    font-size: 12px;
+  }
+
+  .feedback-submit-button {
+    font-size: 12px;
+    padding: 6px 10px;
   }
 }
 
