@@ -3,48 +3,49 @@
     <!-- Help Button -->
     <button class="help-button" @click="showPopup = true">?</button>
 
-<!-- Popup Modal -->
-<div v-if="showPopup" class="popup-overlay">
-  <div class="popup-content">
-    <button class="close-button" @click="showPopup = false">X</button>
-    <h3>How to Play</h3>
-    <p>
-      Every day at 01:00 GMT, a random location from Ark maps is chosen for you to guess.
-    </p>
-    <p>
-      <strong>Getting Started:</strong><br />
-      Select a map from the dropdown menu to begin. The selected map will load for you to place your guesses.
-    </p>
-    <p>
-      <strong>Placing Guesses:</strong><br />
-      Click on the map to place a pin where you think the location is. If you're on the wrong map, you'll receive a message after placing your first pin.
-    </p>
-    <p>
-      <strong>Understanding Pin Colors:</strong><br />
-      On the correct map, the pin color will indicate how close your guess is to the target location:
-    </p>
-    <ul>
-      <li><span class="red-text">Red:</span> Far away from the target.</li>
-      <li><span style="color: orange;">Orange:</span> Close to the target.</li>
-      <li><span class="green-text">Green:</span> Correct guess!</li>
-    </ul>
-    <p>
-      If you notice any errors or have feature suggestions, please email us at
-      <a href="mailto:arkdlefeedback@gmail.com">arkdlefeedback@gmail.com</a>.
-    </p>
-    <p>Happy guessing!</p>
-  </div>
-</div>
-
+    <!-- Popup Modal -->
+    <div v-if="showPopup" class="popup-overlay">
+      <div class="popup-content">
+        <button class="close-button" @click="showPopup = false">X</button>
+        <h3>How to Play</h3>
+        <p>
+          Every day at 01:00 GMT, a random location from Ark maps is chosen for you to guess.
+        </p>
+        <p>
+          <strong>Getting Started:</strong><br />
+          Select a map from the dropdown menu to begin. The selected map will load for you to place your guesses.
+        </p>
+        <p>
+          <strong>Placing Guesses:</strong><br />
+          Click on the map to place a pin where you think the location is. If you're on the wrong map, you'll receive a message after placing your first pin.
+        </p>
+        <p>
+          <strong>Understanding Pin Colors:</strong><br />
+          On the correct map, the pin color will indicate how close your guess is to the target location:
+        </p>
+        <ul>
+          <li><span class="red-text">Red:</span> Far away from the target.</li>
+          <li><span style="color: orange;">Orange:</span> Close to the target.</li>
+          <li><span class="green-text">Green:</span> Correct guess!</li>
+        </ul>
+        <p>
+          If you notice any errors or have feature suggestions, please email us at
+          <a href="mailto:arkdlefeedback@gmail.com">arkdlefeedback@gmail.com</a>.
+        </p>
+        <p>Happy guessing!</p>
+      </div>
+    </div>
 
     <!-- Main Content -->
     <div class="map-page">
       <!-- Header -->
       <div class="guess-map-container">
         <h2 class="map-heading">GUESS THE LOCATION</h2>
-        <img v-if="featuredImage?.image" :src="featuredImage.image" alt="Featured location" class="featured-image" />
+        <img v-if="currentImage" :src="currentImage" alt="Featured location" class="featured-image" />
         <p v-else>No featured location available today.</p>
-
+        <div v-if="!zoomedOut && tries < 10" class="zoom-out-countdown">
+  The image will zoom out in {{ 10 - tries }} {{ 10 - tries === 1 ? 'try' : 'tries' }}.
+</div>
         <!-- Victory Message or Dropdown -->
         <div v-if="!victory" class="input-message-container">
           <p class="choose-map-text">Choose a Map, and place markers</p>
@@ -84,33 +85,26 @@
         </p>
       </div>
     </div>
-       <!-- Feedback Form -->
-       <div class="feedback-container">
-      <h2>Image submission</h2>
-      <p class="feedback-instructions">
-        Please provide the following information:
-      </p>
-      <ul class="feedback-list">
-        <li>The fullscreen image in game</li>
-        <li>No HUD and preferably no hands in the image</li>
-        <li>The co-ordinates of the location</li>
-      </ul>
-      <form @submit.prevent="sendFeedback">
-        <textarea
-          v-model="feedbackText"
-          class="feedback-textarea"
-          placeholder="Type here"
-        ></textarea>
-        <input type="file" multiple @change="handleFileUpload" class="feedback-file-input" />
-        <button type="submit" class="feedback-submit-button">Send Feedback</button>
-      </form>
-    </div>
+<!-- Feedback Form -->
+<div class="feedback-container">
+  <h2>Image Submission</h2>
+  <p class="feedback-instructions">
+    Please provide the following information to <strong>arkdlefeedback@gmail.com</strong>:
+  </p>
+  <ul class="feedback-list">
+    <li>The fullscreen image in-game</li>
+    <li>A secondary fullscreen image in-game that is taken from further away</li>
+    <li>No HUD and preferably no hands in the image</li>
+    <li>The coordinates of the location</li>
+  </ul>
+</div>
   </div>
 </template>
 
 <script>
-import maps from "@/data/maps.js"; // List of maps with their images
-import locations from "@/data/locations.js"; // List of locations tied to maps
+import maps from "@/data/maps.js";
+import locations from "@/data/locations.js";
+import locationsZoomedOut from "@/data/locations_zoomed_out.js";
 
 export default {
   name: "MapView",
@@ -118,16 +112,18 @@ export default {
     return {
       showPopup: false,
       selectedMap: "",
-      maps, // Import map data
-      featuredImage: null, // Randomized daily featured image
-      circles: {}, // Map-specific circles
-      tolerance: 2, // Tolerance in percentage points
-      victory: false, // Whether the player has won
-      tries: 0, // Number of attempts
-      hasPlacedCircle: false, // Whether a circle has been placed
-      dailyKey: "", // Key for today's date in localStorage
-      feedbackText: "", // Feedback text
-      feedbackFiles: [], // Uploaded files
+      maps,
+      featuredImage: null,
+      circles: {},
+      tolerance: 2,
+      victory: false,
+      tries: 0,
+      hasPlacedCircle: false,
+      dailyKey: "",
+      currentImage: null,
+      zoomedOut: false,
+      feedbackText: "",
+      feedbackFiles: [],
     };
   },
   methods: {
@@ -135,91 +131,78 @@ export default {
       const now = new Date();
       return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
     },
-    handleFileUpload(event) {
-      this.feedbackFiles = Array.from(event.target.files);
-    },
-    sendFeedback() {
-      const email = "arkdlefeedback@gmail.com";
-      const subject = encodeURIComponent("Anonymous Feedback");
-      const body = encodeURIComponent(this.feedbackText);
-      const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
-
-      console.log("Files to attach:", this.feedbackFiles);
-
-      // Open mail client with pre-filled feedback
-      window.location.href = mailtoLink;
-
-      // Reset feedback form
-      this.feedbackText = "";
-      this.feedbackFiles = [];
-      alert("Thank you for your feedback!");
-    },
     getDailyFeaturedLocation() {
       const now = new Date();
       const startOfYear = new Date(now.getFullYear(), 0, 1);
       const dayOfYear = Math.floor((now - startOfYear) / (1000 * 60 * 60 * 24));
-
-      // Use dayOfYear to pick a random location deterministically
       const index = dayOfYear % locations.length;
       const location = locations[index];
 
-      console.log("Featured Location:", location); // Debugging log
-
       if (!location) {
-        console.error("No location found for the index:", index);
+        console.error("No location found for index:", index);
       }
 
+      this.currentImage = location.image;
       return location;
+    },
+    switchToZoomedOut() {
+      const zoomedOutLocation = locationsZoomedOut.find(
+        (loc) => loc.id === this.featuredImage.id
+      );
+      if (zoomedOutLocation) {
+        console.log("Switching to zoomed-out image:", zoomedOutLocation.image);
+        this.currentImage = zoomedOutLocation.image;
+        this.zoomedOut = true;
+      } else {
+        console.error(
+          "Zoomed-out image not found for featured image ID:",
+          this.featuredImage.id
+        );
+      }
     },
     getMapImage(mapName) {
       const map = this.maps.find((m) => m.name === mapName);
       return map ? map.image : null;
     },
     placeCircle(event) {
-      if (!this.selectedMap || this.victory) return; // Prevent adding circles after victory
+  if (!this.selectedMap || this.victory) return;
 
-      const mapElement = event.target; // Map image element
-      const rect = mapElement.getBoundingClientRect(); // Bounding box of the map image
+  const mapElement = event.target;
+  const rect = mapElement.getBoundingClientRect();
+  const x = ((event.clientX - rect.left) / rect.width) * 100;
+  const y = ((event.clientY - rect.top) / rect.height) * 100;
 
-      // Calculate the cursor's position relative to the map
-      const x = ((event.clientX - rect.left) / rect.width) * 100;
-      const y = ((event.clientY - rect.top) / rect.height) * 100;
+  const boundedX = Math.max(0, Math.min(100, x));
+  const boundedY = Math.max(0, Math.min(100, y));
 
-      console.log("Cursor Position:", { x, y }); // Debugging log
+  const distance = this.calculateDistance(boundedX, boundedY);
+  let color;
 
-      // Ensure x and y are within 0-100 range
-      const boundedX = Math.max(0, Math.min(100, x));
-      const boundedY = Math.max(0, Math.min(100, y));
+  if (this.selectedMap !== this.featuredImage?.map) {
+    color = "red";
+  } else {
+    color = this.getCircleColor(distance);
+    if (distance <= this.tolerance) {
+      this.victory = true;
+    }
+  }
 
-      // Calculate the distance to the correct location
-      const distance = this.calculateDistance(boundedX, boundedY);
+  // Add the circle to the selected map's circle list
+  if (!this.circles[this.selectedMap]) {
+    this.circles[this.selectedMap] = [];
+  }
+  this.circles[this.selectedMap].push({ x: boundedX, y: boundedY, color });
 
-      let color;
-      if (this.selectedMap !== this.featuredImage?.map) {
-        // Wrong map: All circles are red
-        color = "red";
-      } else {
-        // Right map: Determine circle color based on distance
-        color = this.getCircleColor(distance);
-        // Check for victory
-        if (distance <= this.tolerance) {
-          this.victory = true;
-          this.saveState(); // Save the state upon victory
-          this.scrollToVictoryMessage(); // Scroll to victory message
-        }
-      }
+  this.hasPlacedCircle = true; // Set this to true when placing a circle
+  this.tries++;
+  this.saveState();
 
-      // Add the circle to the selected map's circle list
-      if (!this.circles[this.selectedMap]) {
-        this.circles[this.selectedMap] = [];
-      }
-      this.circles[this.selectedMap].push({ x: boundedX, y: boundedY, color });
-
-      // Increment tries and set hasPlacedCircle flag
-      this.tries++;
-      this.hasPlacedCircle = true;
-      this.saveState(); // Save the state after placing a circle
-    },
+  // Trigger zoomed-out view if the number of attempts exceeds the threshold
+  if (this.tries >= 10 && !this.zoomedOut) {
+    this.switchToZoomedOut();
+  }
+}
+,
     calculateDistance(x, y) {
       if (!this.featuredImage?.correctLocation) return null;
 
@@ -227,27 +210,13 @@ export default {
       const correctX = correctLocation.x;
       const correctY = correctLocation.y;
 
-      // Distance formula
       const distance = Math.sqrt(Math.pow(x - correctX, 2) + Math.pow(y - correctY, 2));
-
-      return Math.round(distance * 100) / 100; // Round to 2 decimal places
+      return Math.round(distance * 100) / 100;
     },
     getCircleColor(distance) {
-      if (distance <= this.tolerance) {
-        return "green"; // Correct guess
-      } else if (distance <= this.tolerance * 10) {
-        return "orange"; // Close guess
-      } else {
-        return "red"; // Far guess
-      }
-    },
-    scrollToVictoryMessage() {
-      this.$nextTick(() => {
-        const victoryElement = this.$refs.victoryMessage;
-        if (victoryElement) {
-          victoryElement.scrollIntoView({ behavior: "smooth" });
-        }
-      });
+      if (distance <= this.tolerance) return "green";
+      if (distance <= this.tolerance * 10) return "orange";
+      return "red";
     },
     saveState() {
       const state = {
@@ -255,7 +224,7 @@ export default {
         circles: this.circles,
         tries: this.tries,
         victory: this.victory,
-        hasPlacedCircle: this.hasPlacedCircle,
+        zoomedOut: this.zoomedOut,
       };
       localStorage.setItem(this.dailyKey, JSON.stringify(state));
     },
@@ -266,22 +235,40 @@ export default {
         this.circles = savedState.circles || {};
         this.tries = savedState.tries || 0;
         this.victory = savedState.victory || false;
-        this.hasPlacedCircle = savedState.hasPlacedCircle || false;
+        this.zoomedOut = savedState.zoomedOut || false;
+
+        if (this.zoomedOut && this.featuredImage) {
+          const zoomedOutLocation = locationsZoomedOut.find(
+            (loc) => loc.id === this.featuredImage.id
+          );
+          this.currentImage = zoomedOutLocation?.image || this.featuredImage.image;
+        }
       }
     },
+    handleFileUpload(event) {
+    this.feedbackFiles = Array.from(event.target.files);
+  },
+  sendFeedback() {
+    const email = "arkdlefeedback@gmail.com";
+    const subject = encodeURIComponent("Feedback Submission");
+    const body = encodeURIComponent(this.feedbackText);
+    const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+
+    console.log("Files to attach:", this.feedbackFiles);
+
+    // Open mail client with pre-filled feedback
+    window.location.href = mailtoLink;
+
+    // Reset feedback form
+    this.feedbackText = "";
+    this.feedbackFiles = [];
+    alert("Thank you for your feedback!");
+  },
   },
   mounted() {
     this.dailyKey = this.getDailyKey();
     this.featuredImage = this.getDailyFeaturedLocation();
-
-    // Reset or load state based on the date
-    const todayKey = this.dailyKey;
-    if (localStorage.getItem(todayKey)) {
-      this.loadState();
-    } else {
-      localStorage.clear(); // Clear old data
-      this.saveState(); // Save initial state
-    }
+    this.loadState();
   },
 };
 </script>
