@@ -115,7 +115,7 @@ export default {
       maps,
       featuredImage: null,
       circles: {},
-      tolerance: 2,
+      tolerance: 2.5,
       victory: false,
       tries: 0,
       hasPlacedCircle: false,
