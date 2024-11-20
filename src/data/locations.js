@@ -27,7 +27,7 @@ export default [
       id: 5,
       image: require("@/assets/locations/Location5.png"),
       map: "Ragnarok",
-      correctLocation: { x: 83, y: 84 }, // Percentage-based coordinates
+      correctLocation: { x: 39, y: 57 }, // Percentage-based coordinates
     },
   ];
   
