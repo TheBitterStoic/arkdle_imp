@@ -134,7 +134,7 @@ export default {
     getDailyFeaturedLocation() {
       const now = new Date();
       const startOfYear = new Date(now.getFullYear(), 0, 1);
-      const dayOfYear = Math.floor((now - startOfYear) / (1000 * 60 * 60 * 24)+ 4);
+      const dayOfYear = Math.floor((now - startOfYear) / (1000 * 60 * 60 * 24) + 4);
       const index = dayOfYear % locations.length;
       const location = locations[index];
 

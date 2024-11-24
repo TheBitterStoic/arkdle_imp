@@ -44,7 +44,7 @@ export default [
   'Glowbugsound.mp3',
   'Castoroidessound.mp3',
   'Bulbdogsound.mp3',
-  'Coelacanthsound.mp3',
+  'Coelecanthsound.mp3',
   'Dilophosaursound.mp3',
   'Karkinossound.mp3',
   'Amargasaurussound.mp3',
