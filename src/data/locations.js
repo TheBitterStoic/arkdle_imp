@@ -53,5 +53,17 @@ export default [
       map: "Valguero",
       correctLocation: { x: 90, y: 90 }, // Percentage-based coordinates
     },
+    {
+      id: 10,
+      image: require("@/assets/locations/Location10.png"),
+      map: "The Island",
+      correctLocation: { x: 85, y: 14 }, // Percentage-based coordinates
+    },
+    {
+      id: 11,
+      image: require("@/assets/locations/Location11.png"),
+      map: "The Island",
+      correctLocation: { x: 62, y: 80 }, // Percentage-based coordinates
+    },
   ];
   

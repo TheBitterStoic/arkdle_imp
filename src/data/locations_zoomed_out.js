@@ -59,5 +59,11 @@ export default [
       map: "The Island",
       correctLocation: { x: 83, y: 84 }, // Percentage-based coordinates
     },
+    {
+      id: 10,
+      image: require("@/assets/locations/Location10.png"),
+      map: "The Island",
+      correctLocation: { x: 85, y: 14 }, // Percentage-based coordinates
+    },
 
 ]
