@@ -246,7 +246,7 @@ const dinoData = [
     temperament: 'Friendly',
     diet: 'Herbivore',
     size: 'Medium',
-    biome: 'Swamp',
+    biome: 'River',
     traversal: 'Ground'
   },
   {
@@ -856,7 +856,7 @@ const dinoData = [
     temperament: 'Loyal',
     diet: 'Herbivore',
     size: 'Small',
-    biome: 'Swamp',
+    biome: 'Beach',
     traversal: 'Ground'
   },
   {
