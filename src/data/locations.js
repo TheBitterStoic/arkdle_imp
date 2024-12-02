@@ -62,8 +62,26 @@ export default [
     {
       id: 11,
       image: require("@/assets/locations/Location11.png"),
-      map: "The Island",
+      map: "Ragnarok",
       correctLocation: { x: 62, y: 80 }, // Percentage-based coordinates
+    },
+    {
+      id: 12,
+      image: require("@/assets/locations/Location12.png"),
+      map: "Ragnarok",
+      correctLocation: { x: 78, y: 20 }, // Percentage-based coordinates
+    },
+    {
+      id: 13,
+      image: require("@/assets/locations/Location13.png"),
+      map: "The Island",
+      correctLocation: { x: 53, y: 80 }, // Percentage-based coordinates
+    },
+    {
+      id: 15,
+      image: require("@/assets/locations/Location15.png"),
+      map: "Extinction",
+      correctLocation: { x: 62, y: 20 }, // Percentage-based coordinates
     },
   ];
   
