@@ -1236,7 +1236,7 @@ const dinoData = [
     temperament: 'Skittish',
     diet: 'Carnivore',
     size: 'Medium',
-    biome: 'Ocean',
+    biome: 'Forest',
     traversal: 'Flyer'
   },
   {
