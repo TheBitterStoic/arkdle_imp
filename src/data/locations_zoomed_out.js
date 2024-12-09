@@ -54,16 +54,34 @@ export default [
       correctLocation: { x: 90, y: 90 }, // Percentage-based coordinates
     },
     {
-      id: 1,
-      image: require("@/assets/locations/Location1_zoomed_out.png"),
-      map: "The Island",
-      correctLocation: { x: 83, y: 84 }, // Percentage-based coordinates
-    },
-    {
       id: 10,
-      image: require("@/assets/locations/Location10.png"),
+      image: require("@/assets/locations/Location10_zoomed_out.png"),
       map: "The Island",
       correctLocation: { x: 85, y: 14 }, // Percentage-based coordinates
+    },
+    {
+      id: 12,
+      image: require("@/assets/locations/Location12_zoomed_out.png"),
+      map: "Ragnarok",
+      correctLocation: { x: 78, y: 20 }, // Percentage-based coordinates
+    },
+    {
+      id: 13,
+      image: require("@/assets/locations/Location13_zoomed_out.png"),
+      map: "The Island",
+      correctLocation: { x: 53, y: 80 }, // Percentage-based coordinates
+    },
+    {
+      id: 14,
+      image: require("@/assets/locations/Location14_zoomed_out.png"),
+      map: "The Center",
+      correctLocation: { x: 30, y: 19 }, // Percentage-based coordinates
+    },
+    {
+      id: 15,
+      image: require("@/assets/locations/Location15_zoomed_out.png"),
+      map: "Extinction",
+      correctLocation: { x: 62, y: 20 }, // Percentage-based coordinates
     },
 
 ]
