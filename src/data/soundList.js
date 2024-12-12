@@ -62,7 +62,6 @@ export default [
   'Arthropluerasound.mp3',
   'Thylacoleosound.mp3',
   'Electrophorussound.mp3',
-  'RockDrakesound.mp3',
   'Pelagornissound.mp3',
   'Reapersound.mp3',
   'Astrodelphissound.mp3',
