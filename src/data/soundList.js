@@ -67,7 +67,6 @@ export default [
   'Astrodelphissound.mp3',
   'Stegosaurussound.mp3',
   'Icthyornissound.mp3',
-  'Tapejarasound.mp3',
   'Direwolfsound.mp3',
   'Tropeognathussound.mp3',
   'Compysound.mp3',
