@@ -1637,7 +1637,7 @@ const dinoData = [
     diet: 'Carnivore',
     size: 'Small',
     biome: 'Desert',
-    traversal: 'Ground'
+    traversal: 'Flyer'
   },
   {
     name: 'Woolly Rhino',
